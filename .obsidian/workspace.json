@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "10 Core/Testing Strategy.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
+              "title": "Testing Strategy"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "10 Core/Testing Strategy.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Backlinks for Testing Strategy"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
+                "file": "10 Core/Testing Strategy.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Welcome"
+              "title": "Outgoing links from Testing Strategy"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
+                "file": "10 Core/Testing Strategy.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline of Testing Strategy"
             }
           }
         ]
@@ -185,15 +185,18 @@
   },
   "active": "e75b30a6fd4d6e23",
   "lastOpenFiles": [
-    "AGENTS.md",
-    "Welcome.md",
     "20 Frameworks/FastAPI Guidelines.md",
+    "30 Playbooks/Codex Instruction Strategy.md",
+    "90 Sources/Interpretation Notes.md",
+    "AGENTS.md",
+    "00 Maps/Codex Instruction Map.md",
+    "10 Core/Typing and DTO Contracts.md",
+    "90 Sources/Codex Product Sources.md",
+    "Welcome.md",
     "20 Frameworks/Django and DRF Guidelines.md",
     "10 Core/Testing Strategy.md",
-    "10 Core/Typing and DTO Contracts.md",
     "10 Core/Workflow and Quality Gates.md",
     "00 Maps/Python Guidelines Context Map.md",
-    "90 Sources/Interpretation Notes.md",
     "90 Sources/Upstream Sources.md",
     "30 Playbooks/Review Checklist.md",
     "30 Playbooks/Implementation Playbook.md",

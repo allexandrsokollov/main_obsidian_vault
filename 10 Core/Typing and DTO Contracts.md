@@ -21,8 +21,7 @@ Every meaningful data shape must be explicit: typed signatures, typed DTOs, type
 - Prefer precise containers such as `list[str]`, `dict[int, UserDto]`, `set[EntityId]`, and `tuple[str, int]`.
 - Model optionality explicitly with `T | None` only when absence is valid.
 - Keep primitives for narrow, simple helpers.
-- For a business operation with five or more parameters, group related fields into an intent-named DTO. See the upstream wording issue in [[Interpretation Notes]].
-- If function has more then 4 args then create a DTO to handle it's arguments 
+- For a business operation with five or more parameters, group its related arguments into an intent-named DTO. See the upstream threshold clarification in [[Interpretation Notes]].
 
 ## DTOs
 

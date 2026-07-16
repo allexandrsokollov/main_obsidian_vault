@@ -4,11 +4,11 @@ This workspace is a knowledge vault, not an application repository.
 
 ## Context loading
 
-1. Start at `00 Maps/Python Guidelines Context Map.md`.
-2. Always read `10 Core/Workflow and Quality Gates.md` for Python work.
-3. Load only the core and framework notes selected by the context map.
-4. Use `30 Playbooks/Implementation Playbook.md` for changes and `30 Playbooks/Review Checklist.md` for reviews.
-5. Consult `90 Sources/Interpretation Notes.md` when wording or precedence is unclear.
+1. For Python work, start at `00 Maps/Python Guidelines Context Map.md` and read `10 Core/Workflow and Quality Gates.md`.
+2. Load only the core and framework notes selected by the Python context map.
+3. Use `30 Playbooks/Implementation Playbook.md` for changes and `30 Playbooks/Review Checklist.md` for reviews.
+4. Consult `90 Sources/Interpretation Notes.md` when Python wording or precedence is unclear.
+5. For Codex configuration or instruction-design work, start at `00 Maps/Codex Instruction Map.md`, then read `30 Playbooks/Codex Instruction Strategy.md`.
 
 ## Operating rules
 

@@ -15,7 +15,9 @@ Start with [[Python Guidelines Context Map]]. It routes a task to the smallest r
 
 ## Main entry points
 
+- [[Codex Instruction Map]] — where each kind of instruction should live
 - [[Python Guidelines Context Map]] — context router and precedence rules
+- [[Codex Instruction Strategy]] — improved Personalization text and rollout
 - [[Implementation Playbook]] — plan, implement, and verify a change
 - [[Review Checklist]] — review existing Python code
 - [[Upstream Sources]] — pinned source revision and provenance

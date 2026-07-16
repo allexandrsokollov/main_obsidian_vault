@@ -13,6 +13,8 @@ tags:
 
 Use this map to load only the context needed for the current task.
 
+For deciding whether guidance belongs in Personalization, `AGENTS.md`, a prompt, or a skill, use [[Codex Instruction Map]].
+
 ## Always load
 
 1. [[Workflow and Quality Gates]]

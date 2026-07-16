@@ -20,7 +20,6 @@ Tests should prove externally observable behavior and remain useful through inte
 - Message handlers
 - CLI commands
 - Public service interfaces
-- particular methods and functions 
 
 Exercise the path real callers use so routing, validation, business logic, serialization, and infrastructure integration are covered where relevant.
 
