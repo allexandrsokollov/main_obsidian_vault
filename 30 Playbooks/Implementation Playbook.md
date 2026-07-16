@@ -43,7 +43,7 @@ tags:
 2. Run the related module or package tests.
 3. Run broader tests when risk warrants it.
 4. Run `ruff` and `mypy` on the changed scope.
-5. Inspect the final diff without using Git commands; confirm every changed line is in scope.
+5. Inspect the final diff with read-only Git commands such as `git diff` and `git status`; confirm every changed line is in scope.
 
 ## 6. Hand off
 
@@ -55,4 +55,4 @@ Report:
 - Checks not run and exact reason
 - Remaining risk or source ambiguity
 
-Git history remains human-owned; see [[Workflow and Quality Gates]].
+Git mutations and history remain human-owned; read-only inspection is allowed as defined in [[Workflow and Quality Gates]].

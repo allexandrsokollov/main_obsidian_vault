@@ -19,6 +19,7 @@ This workspace is a knowledge vault, not an application repository.
 - For behavior changes, add or update behavior-focused tests in the same change.
 - Run the smallest relevant tests plus `ruff` and `mypy`; report any check that cannot run.
 - Never weaken lint or type-check configuration to make checks pass.
-- Do not run Git commands or alter Git history. Git operations are human-only under the source workflow policy.
+- Agents may run read-only Git commands to inspect repository state and history, including `git status`, `git diff`, `git log`, `git show`, and `git blame`.
+- Do not run Git commands that modify the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state. All Git mutations remain human-only.
 
-The source of truth for navigation is the context map. The upstream repository remains authoritative for exact wording.
+The source of truth for navigation is the context map. The upstream repository remains authoritative for exact wording except where [[Interpretation Notes]] documents a local interpretation or override.

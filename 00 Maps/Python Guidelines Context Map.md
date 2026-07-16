@@ -41,7 +41,7 @@ flowchart TD
 
 | Task signal | Load | Key outcome |
 |---|---|---|
-| Any Python change | [[Workflow and Quality Gates]] | Respect human-only Git policy and run quality gates |
+| Any Python change | [[Workflow and Quality Gates]] | Use Git only for read-only inspection and run quality gates |
 | New code, refactor, architecture | [[Clean Code and Architecture]] + [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
 | Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
 | FastAPI endpoint, settings, errors | [[FastAPI Guidelines]] | Thin endpoints, typed settings, centralized errors |

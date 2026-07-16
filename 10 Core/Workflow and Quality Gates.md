@@ -13,11 +13,19 @@ tags:
 
 ## Non-negotiable workflow
 
-- Git operations are human-only. Codex must not run Git commands or alter history.
+- Read-only Git inspection is allowed. Codex may use commands such as `git status`, `git diff`, `git log`, `git show`, and `git blame` when they do not change repository state.
+- Git mutations are human-only. Codex must not modify the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state through Git.
 - Tests are written or updated with every behavior change.
 - Applicable tests, `ruff`, and `mypy` must pass before completion.
 - Do not weaken, disable, or reconfigure quality rules to silence failures.
 - Keep any unavoidable suppression local and specific, with a concrete explanation.
+
+## Git boundary
+
+- Use read-only Git commands when they provide useful evidence about user-owned changes, history, or the final diff.
+- Do not use mutating options with an otherwise read-only command.
+- Mutating invocations include staging or restoring files; creating, deleting, or switching branches or tags; changing configuration or remotes; stashing; fetching; pulling; committing; merging; rebasing; cherry-picking; reverting; resetting; cleaning; and pushing.
+- If it is unclear whether a Git invocation can change local or remote state, do not run it; use a non-Git inspection method or ask the user.
 
 ## Before editing
 

@@ -35,7 +35,7 @@ Vault summaries are pinned to revision `885b4e41af02a3c432de5086e74d3bd347cc70ca
 
 When updating the vault:
 
-1. Compare the pinned revision with upstream without changing Git state in this vault.
+1. Compare the pinned revision with upstream using read-only inspection; do not fetch or otherwise modify local or remote Git state.
 2. Update only notes affected by source changes.
 3. Record new ambiguities in [[Interpretation Notes]].
 4. Update every `source_revision` field and this index together.

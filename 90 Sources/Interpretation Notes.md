@@ -31,3 +31,7 @@ Vault interpretation: for a business operation with **five or more parameters**,
 ## Summary boundary
 
 The vault compresses rules for retrieval and does not reproduce every upstream example. When exact syntax or wording matters, open the pinned file in [[Upstream Sources]].
+
+## Read-only Git inspection
+
+The pinned upstream workflow forbids an AI agent from running any Git command. This vault intentionally applies a repository-local exception: agents may run Git commands that only inspect state or history. Any invocation that modifies the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state remains human-only. See [[Workflow and Quality Gates]] for the operational boundary.
