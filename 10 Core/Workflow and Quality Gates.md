@@ -1,0 +1,58 @@
+---
+type: guideline
+status: active
+scope: python
+source_revision: 885b4e41af02a3c432de5086e74d3bd347cc70ca
+tags:
+  - python
+  - workflow
+  - quality-gates
+---
+
+# Workflow and Quality Gates
+
+## Non-negotiable workflow
+
+- Git operations are human-only. Codex must not run Git commands or alter history.
+- Tests are written or updated with every behavior change.
+- Applicable tests, `ruff`, and `mypy` must pass before completion.
+- Do not weaken, disable, or reconfigure quality rules to silence failures.
+- Keep any unavoidable suppression local and specific, with a concrete explanation.
+
+## Before editing
+
+- Restate the intended behavior in verifiable terms.
+- Identify the smallest relevant test or reproduction command.
+- State assumptions that affect behavior, architecture, tests, or public API.
+- Identify applicable context through [[Python Guidelines Context Map]].
+- Inspect existing conventions before creating a new pattern.
+
+## During editing
+
+- Change only files and lines required by the request.
+- Add or update tests in the same change.
+- Avoid unrelated formatting, renaming, cleanup, and refactoring.
+- Keep suppressions exceptional; solve the underlying design issue where practical.
+
+## Verification ladder
+
+Run the narrowest useful checks first:
+
+1. Focused test for changed behavior
+2. Related test module or package
+3. Broader suite when risk or project practice requires it
+4. `ruff` on the changed scope
+5. `mypy` on the changed scope
+
+Report the exact command and blocker when a check cannot run. Do not claim completion from inspection alone when executable verification is available.
+
+## Done criteria
+
+- Requested behavior is implemented.
+- Tests cover success and relevant failure paths.
+- Changed behavior is verified through a real entry point when practical.
+- `ruff` and `mypy` pass without weakened configuration.
+- Every changed line serves the request.
+- No user-owned or unrelated work was reverted.
+
+Related: [[Testing Strategy]] · [[Implementation Playbook]] · [[Upstream Sources]]

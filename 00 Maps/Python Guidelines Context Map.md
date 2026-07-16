@@ -1,0 +1,82 @@
+---
+type: map-of-content
+status: active
+scope: python
+source_revision: 885b4e41af02a3c432de5086e74d3bd347cc70ca
+tags:
+  - python
+  - codex
+  - context-map
+---
+
+# Python Guidelines Context Map
+
+Use this map to load only the context needed for the current task.
+
+## Always load
+
+1. [[Workflow and Quality Gates]]
+2. The task-specific notes selected below
+
+```mermaid
+flowchart TD
+    A["Python task"] --> W["Workflow and Quality Gates"]
+    A --> T{"Task context"}
+    T -->|"Design, implementation, refactor"| C["Clean Code and Architecture"]
+    T -->|"Signatures, DTOs, queries"| Y["Typing and DTO Contracts"]
+    T -->|"Behavior change or bug fix"| X["Testing Strategy"]
+    T -->|"FastAPI"| F["FastAPI Guidelines"]
+    T -->|"Django or DRF"| D["Django and DRF Guidelines"]
+    C --> I["Implementation Playbook"]
+    Y --> I
+    X --> I
+    F --> I
+    D --> I
+    A -->|"Review request"| R["Review Checklist"]
+```
+
+## Routing table
+
+| Task signal | Load | Key outcome |
+|---|---|---|
+| Any Python change | [[Workflow and Quality Gates]] | Respect human-only Git policy and run quality gates |
+| New code, refactor, architecture | [[Clean Code and Architecture]] + [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
+| Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
+| FastAPI endpoint, settings, errors | [[FastAPI Guidelines]] | Thin endpoints, typed settings, centralized errors |
+| Django/DRF view, settings, errors | [[Django and DRF Guidelines]] | Thin views, Django settings, DRF exception mapping |
+| Code review | [[Review Checklist]] plus relevant framework note | Findings tied to observable risk and strict rules |
+| Unclear or conflicting rule | [[Interpretation Notes]] | Apply documented precedence; surface ambiguity |
+
+## Precedence
+
+Apply guidance in this order:
+
+1. Explicit user requirements
+2. Repository-local instructions and established patterns
+3. Applicable framework note
+4. Core notes in this vault
+5. General preference
+
+Do not use a local pattern to justify a behavior that an applicable strict rule explicitly forbids. If rules genuinely conflict or would change a public contract, stop and surface the conflict.
+
+## Minimal context bundles
+
+### Framework-agnostic change
+
+[[Workflow and Quality Gates]] → [[Clean Code and Architecture]] → [[Typing and DTO Contracts]] → [[Testing Strategy]] → [[Implementation Playbook]]
+
+### FastAPI change
+
+Framework-agnostic bundle + [[FastAPI Guidelines]]
+
+### Django or DRF change
+
+Framework-agnostic bundle + [[Django and DRF Guidelines]]
+
+### Review only
+
+[[Workflow and Quality Gates]] → [[Review Checklist]] → relevant core/framework note
+
+## Source boundary
+
+These notes are a retrieval-oriented summary. For exact wording, examples, or a disputed interpretation, use [[Upstream Sources]] and [[Interpretation Notes]].
