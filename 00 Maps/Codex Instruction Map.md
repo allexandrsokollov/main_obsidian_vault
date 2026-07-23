@@ -2,7 +2,7 @@
 type: map-of-content
 status: active
 scope: codex
-verified: 2026-07-16
+verified: 2026-07-23
 tags:
   - codex
   - personalization
@@ -21,9 +21,11 @@ flowchart TD
     Q -->|"One repository"| R["Repository AGENTS.md"]
     Q -->|"One subtree"| N["Nested AGENTS.md or AGENTS.override.md"]
     Q -->|"One kind of repeated task"| S["Skill"]
+    Q -->|"Accepted decisions reused across tasks"| C["Project context note"]
     Q -->|"One task only"| T["Task prompt"]
     R --> K["Knowledge maps and playbooks"]
     N --> K
+    C --> K
 ```
 
 ## Placement rules
@@ -34,6 +36,7 @@ flowchart TD
 | Personal `AGENTS.md` | Durable cross-repository defaults and routing | Duplicates of Personalization or project-only rules |
 | Repository `AGENTS.md` | Layout, commands, architecture, language policy, definition of done | Personal tone preferences and unrelated repositories |
 | Nested `AGENTS.md` or `AGENTS.override.md` | Rules for a specific package or service | General repository rules already stated above |
+| Project context note | Accepted architecture, compatibility boundaries, current state, and compact handoffs | Exploration logs, rejected alternatives, raw command output |
 | Skill | A repeated workflow with specialized references or scripts | One-off task context |
 | Task prompt | Goal, relevant context, constraints, and done condition | Durable rules that should apply next time |
 
@@ -42,9 +45,15 @@ flowchart TD
 1. Personalization supplies a short working style.
 2. Repository `AGENTS.md` supplies the concrete engineering contract.
 3. The applicable context map loads deeper knowledge on demand.
-4. The task prompt names the result and completion evidence.
+4. A decision checkpoint settles material choices before substantial implementation.
+5. A compact handoff carries only accepted decisions into implementation.
+6. The task prompt names the result and completion evidence.
 
 Codex discovers `AGENTS.md` once per run/session, from global scope through the repository path. More specific files appear later and override broader guidance. Avoid duplicating the same rule at several layers.
+
+Use [[Codex Context Continuity]] when a plan spans multiple tasks, a long exploration
+would pollute implementation context, or a retrospective reveals missing durable
+guidance.
 
 ## Language routing
 
@@ -65,4 +74,4 @@ Then give the task using:
 > Constraints: …  
 > Done when: …
 
-Related: [[Codex Instruction Strategy]] · [[Codex Product Sources]]
+Related: [[Codex Instruction Strategy]] · [[Codex Context Continuity]] · [[Codex Product Sources]]
