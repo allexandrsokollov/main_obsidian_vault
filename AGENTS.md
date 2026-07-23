@@ -9,6 +9,7 @@ This workspace is a knowledge vault, not an application repository.
 3. Use `30 Playbooks/Implementation Playbook.md` for changes and `30 Playbooks/Review Checklist.md` for reviews.
 4. Consult `90 Sources/Interpretation Notes.md` when Python wording or precedence is unclear.
 5. For Codex configuration or instruction-design work, start at `00 Maps/Codex Instruction Map.md`, then read `30 Playbooks/Codex Instruction Strategy.md`.
+6. For retrospectives, cross-task context persistence, or planning-to-implementation handoffs, also read `30 Playbooks/Codex Context Continuity.md`.
 
 ## Operating rules
 

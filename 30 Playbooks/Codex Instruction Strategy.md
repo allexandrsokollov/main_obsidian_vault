@@ -2,7 +2,7 @@
 type: playbook
 status: active
 scope: codex
-verified: 2026-07-16
+verified: 2026-07-23
 tags:
   - codex
   - personalization
@@ -113,6 +113,22 @@ Done when: <tests, checks, or behavior that prove completion>
 
 Do not repeat the entire guardrail document in every prompt. Add only task-specific information.
 
+## Persisting context across tasks
+
+Do not make one prompt or `AGENTS.md` carry the entire history of a project.
+Promote information according to its lifetime:
+
+- Repeated, repository-wide rule: repository `AGENTS.md`.
+- Detailed accepted architecture or compatibility contract: a focused project
+  context note routed from `AGENTS.md`.
+- Material choices for one substantial change: a decision checkpoint.
+- Accepted plan moving into implementation: a compact implementation handoff.
+- Exploration logs, rejected alternatives, and raw command output: do not
+  persist unless they are evidence for an unresolved risk.
+
+Use [[Codex Context Continuity]] for the repository template, decision checkpoint,
+and implementation handoff.
+
 ## Rollout checklist
 
 - [ ] Replace the long Personalization block with the concise version.
@@ -122,6 +138,8 @@ Do not repeat the entire guardrail document in every prompt. Add only task-speci
 - [ ] Add nested instructions only where a subtree genuinely differs.
 - [ ] Start a new task/session so Codex rebuilds its instruction chain.
 - [ ] Ask Codex to list active instruction sources and conflicts.
+- [ ] For substantial work, settle material choices with a decision checkpoint.
+- [ ] Start implementation from a compact accepted-decision handoff.
 - [ ] After a repeated failure, update the narrowest responsible instruction layer.
 
-Related: [[Codex Instruction Map]] · [[Python Guidelines Context Map]] · [[Codex Product Sources]]
+Related: [[Codex Instruction Map]] · [[Codex Context Continuity]] · [[Python Guidelines Context Map]] · [[Codex Product Sources]]
