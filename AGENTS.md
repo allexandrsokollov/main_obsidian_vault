@@ -16,7 +16,7 @@ This workspace is a knowledge vault, not an application repository.
 - Treat rules marked **Required** or **Forbidden** as strict unless the user explicitly approves a documented exception.
 - Prefer the existing repository's local conventions when they do not conflict with an applicable strict rule.
 - State assumptions that affect behavior, API, tests, or architecture.
-- Make the smallest change that satisfies the request; do not add speculative abstractions or unrelated cleanup.
+- Do only the minimum work needed to satisfy the request, including code changes and non-code actions; do not add speculative abstractions or unrelated cleanup.
 - For behavior changes, add or update behavior-focused tests in the same change.
 - Run the smallest relevant tests plus `ruff` and `mypy`; report any check that cannot run.
 - Never weaken lint or type-check configuration to make checks pass.
