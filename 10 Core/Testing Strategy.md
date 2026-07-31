@@ -38,6 +38,18 @@ Exercise the path real callers use so routing, validation, business logic, seria
 - Structure each test as Arrange, Act, Assert.
 - Name the scenario and expected outcome.
 - Prefer one behavior scenario per test.
+- Test several materially distinct success scenarios; a single happy-path
+  scenario is insufficient.
+- As the behavior under test becomes more complex, the number of success
+  scenarios **MUST** increase substantially, not marginally. Cover each
+  materially different branch, state, boundary value, and collaborator
+  interaction.
+- Test several materially distinct negative scenarios; one generic failure
+  scenario is insufficient.
+- As the behavior under test becomes more complex, the number of negative
+  scenarios **MUST** increase substantially, not marginally. Cover each
+  validation rule, failure source, invalid state, boundary failure, and
+  relevant combination of failures.
 
 Cover relevant negative paths:
 
