@@ -7,6 +7,8 @@ tags:
   - python
   - ruff
   - mypy
+  - pyright
+  - basedpyright
   - linting
   - typing
   - quality-gates
@@ -16,14 +18,17 @@ tags:
 
 ## Required policy
 
-- **Ruff and mypy are required** for production code and tests.
+- **Ruff, mypy, and BasedPyright are required** for production code and tests.
 - Use Ruff for both formatting and linting. Do not add Black for formatting.
+- Use strict mypy as the primary type checker. BasedPyright supplements mypy
+  and must at least reject casts between types that cannot overlap.
 - The repository's `pyproject.toml` **MUST** contain the baseline below or a
   demonstrably stricter configuration.
 - A stricter configuration may select more Ruff rules, ignore fewer rules,
-  remove per-file exceptions, or remove mypy relaxations. It must not remove a
-  baseline rule, add a broader ignore, disable mypy strict mode, or weaken an
-  explicit mypy check.
+  remove per-file exceptions, remove mypy relaxations, or enable a stricter
+  BasedPyright mode. It must not remove a baseline rule, add a broader ignore,
+  disable mypy strict mode, weaken an explicit mypy check, or disable
+  BasedPyright's invalid-cast error.
 - Project paths and the Python target **MUST** match the repository. Changing
   only `app`/`src` paths or the declared Python version is an adaptation, not a
   relaxation; all production and test packages must remain in scope.
@@ -48,6 +53,21 @@ Review every unsafe fix. Verification and CI must use non-mutating commands:
 uv run ruff format --check ${CODE_DIRS} ${TEST_DIRS}
 uv run ruff check ${CODE_DIRS} ${TEST_DIRS}
 uv run mypy ${CODE_DIRS} ${TEST_DIRS}
+uv run basedpyright
+```
+
+## Minimum tooling dependencies
+
+Merge these tools into the project's existing development dependencies; do
+not replace unrelated entries in the `dev` list:
+
+```toml
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    "basedpyright>=1.37.4",
+]
 ```
 
 ## Minimum Ruff configuration
@@ -145,7 +165,7 @@ layout without reducing checked scope.
 ```toml
 [tool.mypy]
 python_version = "3.13"
-files = ["src", "tests"]
+files = ["app", "tests"]
 exclude = [
     "^build/",
     "^dist/",
@@ -200,6 +220,35 @@ its three exceptions is stricter. Never add `ignore_missing_imports = true` or
 an `ignore_errors = true` override. Keep relevant framework plugins enabled;
 remove a plugin only when its framework is not a project dependency.
 
+## Minimum BasedPyright configuration
+
+Configure it as a required supplement to mypy:
+
+```toml
+[tool.basedpyright]
+include = ["app", "tests"]
+exclude = ["build", "dist", ".venv"]
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+reportArgumentType = "none"
+reportCallIssue = "none"
+reportIndexIssue = "none"
+reportInvalidCast = "error"
+```
+
+`include`, `exclude`, and `pythonVersion` must match the repository. Production
+and test packages must remain in scope. `typeCheckingMode = "basic"` is the
+minimum; `off` is forbidden. `reportArgumentType`, `reportCallIssue`, and
+`reportIndexIssue` may be disabled because strict mypy owns those overlapping
+checks and they can produce false positives for Pydantic models whose runtime
+defaults are outside generated signatures. These are the only permitted
+disabled basic-mode diagnostics.
+
+`reportInvalidCast = "error"` remains active as a required additional check. A
+stricter configuration may enable any delegated diagnostic or use `standard`
+or `strict`, but must not disable or lower the severity of any other baseline
+diagnostic.
+
 ## Review checklist
 
 - [ ] Ruff formats and checks every production and test package.
@@ -208,7 +257,13 @@ remove a plugin only when its framework is not a project dependency.
 - [ ] mypy checks every production and test package with `strict = true`.
 - [ ] Explicit mypy strictness flags are not disabled by an override.
 - [ ] Missing third-party typing is handled rather than globally ignored.
-- [ ] Ruff and mypy pass using non-mutating verification commands.
+- [ ] BasedPyright checks all production and test packages.
+- [ ] BasedPyright uses `basic`, `standard`, or `strict` mode.
+- [ ] No BasedPyright diagnostic except `reportArgumentType`,
+      `reportCallIssue`, and `reportIndexIssue` is disabled.
+- [ ] `reportInvalidCast` is enabled at `error` severity or stricter.
+- [ ] Ruff, mypy, and BasedPyright pass using non-mutating verification
+      commands.
 
 Related: [[Workflow and Quality Gates]] · [[Typing and DTO Contracts]] ·
 [[Interpretation Notes]] · [[Upstream Sources]]

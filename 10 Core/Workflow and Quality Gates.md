@@ -16,7 +16,8 @@ tags:
 - Read-only Git inspection is allowed. Codex may use commands such as `git status`, `git diff`, `git log`, `git show`, and `git blame` when they do not change repository state.
 - Git mutations are human-only. Codex must not modify the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state through Git.
 - Tests are written or updated with every behavior change.
-- Applicable tests, `ruff`, and `mypy` must pass before completion.
+- Applicable tests, `ruff`, `mypy`, and `basedpyright` must pass before
+  completion.
 - Do not weaken, disable, or reconfigure quality rules to silence failures.
 - Keep any unavoidable suppression local and specific, with a concrete explanation.
 
@@ -51,6 +52,7 @@ Run the narrowest useful checks first:
 3. Broader suite when risk or project practice requires it
 4. `ruff` on the changed scope
 5. `mypy` on the changed scope
+6. `basedpyright` on the changed scope
 
 Report the exact command and blocker when a check cannot run. Do not claim completion from inspection alone when executable verification is available.
 
@@ -59,7 +61,7 @@ Report the exact command and blocker when a check cannot run. Do not claim compl
 - Requested behavior is implemented.
 - Tests cover success and relevant failure paths.
 - Changed behavior is verified through a real entry point when practical.
-- `ruff` and `mypy` pass without weakened configuration.
+- `ruff`, `mypy`, and `basedpyright` pass without weakened configuration.
 - Every changed line serves the request.
 - No user-owned or unrelated work was reverted.
 

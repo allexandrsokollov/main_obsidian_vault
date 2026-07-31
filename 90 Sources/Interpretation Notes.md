@@ -20,19 +20,21 @@ telemetry work. It extends the pinned upstream Python guidance; it does not
 claim upstream provenance or change the upstream source wording. Explicit user
 requirements and closer repository instructions retain precedence.
 
-## Ruff and mypy baseline
+## Linting and type-checking configuration
 
-[[Linting and Type Checking]] records the minimum configuration from the CROC
-Blog HTML export supplied on 2026-07-31. It is an additional user-supplied
-source and is not part of the pinned upstream revision.
-
-The source places the mypy `plugins` key after the `tool.mypy.overrides` array
-of tables, which would scope the plugins to the test override in TOML. The
-vault moves that key to `[tool.mypy]` so relevant plugins apply to production
-and test code; this is the stricter reading of the stated goal. Package paths,
+Keep the mypy `plugins` key in `[tool.mypy]` so relevant plugins apply to
+production and test code rather than only a test override. Package paths,
 first-party module names, applicable framework plugins, and the declared
 Python version must match the repository without reducing the production or
 test scope.
+
+BasedPyright supplements rather than replaces mypy. Its minimum profile uses
+basic mode and keeps `reportInvalidCast = "error"` active. Only
+`reportArgumentType`, `reportCallIssue`, and `reportIndexIssue` may be disabled
+because strict mypy owns those overlapping checks and they can produce false
+positives for Pydantic runtime defaults. Enabling those diagnostics or a
+broader checking mode is stricter; disabling another basic-mode diagnostic or
+lowering the invalid-cast diagnostic is not.
 
 ## Function argument threshold
 

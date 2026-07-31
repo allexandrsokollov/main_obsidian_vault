@@ -47,7 +47,7 @@ flowchart TD
 
 | Task signal | Load | Key outcome |
 |---|---|---|
-| Any Python change | [[Clean Code and Architecture]] + [[Linting and Type Checking]] + [[Workflow and Quality Gates]] | Keep code clean; run Ruff and mypy with the required baseline or stricter configuration; use Git only for read-only inspection |
+| Any Python change | [[Clean Code and Architecture]] + [[Linting and Type Checking]] + [[Workflow and Quality Gates]] | Keep code clean; run Ruff, mypy, and BasedPyright with the required baseline or stricter configuration; use Git only for read-only inspection |
 | New code, refactor, architecture | [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
 | Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
 | Shared library, canonical factory, dependency integration | [[Integration Boundaries]] + [[Implementation Playbook]] | One owner and one production construction path |
