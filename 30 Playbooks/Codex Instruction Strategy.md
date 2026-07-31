@@ -2,7 +2,7 @@
 type: playbook
 status: active
 scope: codex
-verified: 2026-07-23
+verified: 2026-07-16
 tags:
   - codex
   - personalization
@@ -113,21 +113,15 @@ Done when: <tests, checks, or behavior that prove completion>
 
 Do not repeat the entire guardrail document in every prompt. Add only task-specific information.
 
-## Persisting context across tasks
+## Planning rules
 
-Do not make one prompt or `AGENTS.md` carry the entire history of a project.
-Promote information according to its lifetime:
+Every non-trivial implementation plan must:
 
-- Repeated, repository-wide rule: repository `AGENTS.md`.
-- Detailed accepted architecture or compatibility contract: a focused project
-  context note routed from `AGENTS.md`.
-- Material choices for one substantial change: a decision checkpoint.
-- Accepted plan moving into implementation: a compact implementation handoff.
-- Exploration logs, rejected alternatives, and raw command output: do not
-  persist unless they are evidence for an unresolved risk.
-
-Use [[Codex Context Continuity]] for the repository template, decision checkpoint,
-and implementation handoff.
+- State the minimum information required to implement the task, including the relevant files, current behavior, desired behavior, constraints, and completion evidence. Inspect available context first; ask the user only for missing information that would materially change the implementation.
+- Propose the smallest code change that fully implements the requested behavior. Exclude speculative abstractions, unrelated refactors, cleanup, and optional features.
+- Include at least one control point with the narrowest relevant tests. Name the behavior being tested and the expected passing result before proceeding.
+- End with verification of the completed work against the requested behavior and completion criteria.
+- If a test or verification step fails, diagnose the cause, revise the implementation, and repeat the failed checks. Do not declare completion until the checks pass or an external blocker is reported with the remaining risk.
 
 ## Rollout checklist
 
