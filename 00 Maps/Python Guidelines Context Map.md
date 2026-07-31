@@ -17,14 +17,17 @@ For deciding whether guidance belongs in Personalization, `AGENTS.md`, a prompt,
 
 ## Always load
 
-1. [[Workflow and Quality Gates]]
-2. The task-specific notes selected below
+1. [[Clean Code and Architecture]]
+2. [[Linting and Type Checking]]
+3. [[Workflow and Quality Gates]]
+4. The task-specific notes selected below
 
 ```mermaid
 flowchart TD
-    A["Python task"] --> W["Workflow and Quality Gates"]
+    A["Python task"] --> C["Clean Code and Architecture"]
+    A --> L["Linting and Type Checking"]
+    A --> W["Workflow and Quality Gates"]
     A --> T{"Task context"}
-    T -->|"Design, implementation, refactor"| C["Clean Code and Architecture"]
     T -->|"Signatures, DTOs, queries"| Y["Typing and DTO Contracts"]
     T -->|"Behavior change or bug fix"| X["Testing Strategy"]
     T -->|"Shared library, integration, compatibility"| B["Integration Boundaries"]
@@ -44,8 +47,8 @@ flowchart TD
 
 | Task signal | Load | Key outcome |
 |---|---|---|
-| Any Python change | [[Workflow and Quality Gates]] | Use Git only for read-only inspection and run quality gates |
-| New code, refactor, architecture | [[Clean Code and Architecture]] + [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
+| Any Python change | [[Clean Code and Architecture]] + [[Linting and Type Checking]] + [[Workflow and Quality Gates]] | Keep code clean; run Ruff and mypy with the required baseline or stricter configuration; use Git only for read-only inspection |
+| New code, refactor, architecture | [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
 | Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
 | Shared library, canonical factory, dependency integration | [[Integration Boundaries]] + [[Implementation Playbook]] | One owner and one production construction path |
 | Cross-service transport, compatibility, observability | [[Integration Boundaries]] + [[Testing Strategy]] | Preserve boundary behavior and prove the end-to-end flow |
@@ -70,7 +73,7 @@ Do not use a local pattern to justify a behavior that an applicable strict rule 
 
 ### Framework-agnostic change
 
-[[Workflow and Quality Gates]] → [[Clean Code and Architecture]] → [[Typing and DTO Contracts]] → [[Testing Strategy]] → [[Implementation Playbook]]
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Typing and DTO Contracts]] → [[Testing Strategy]] → [[Implementation Playbook]]
 
 ### FastAPI change
 
@@ -82,12 +85,12 @@ Framework-agnostic bundle + [[Django and DRF Guidelines]]
 
 ### Shared infrastructure or cross-service integration
 
-[[Workflow and Quality Gates]] → [[Integration Boundaries]] →
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Integration Boundaries]] →
 [[Testing Strategy]] → [[Implementation Playbook]]
 
 ### Review only
 
-[[Workflow and Quality Gates]] → [[Review Checklist]] → relevant core/framework note
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Review Checklist]] → relevant core/framework note
 
 ## Source boundary
 

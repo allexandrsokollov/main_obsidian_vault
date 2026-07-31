@@ -63,4 +63,5 @@ Report the exact command and blocker when a check cannot run. Do not claim compl
 - Every changed line serves the request.
 - No user-owned or unrelated work was reverted.
 
-Related: [[Testing Strategy]] · [[Implementation Playbook]] · [[Upstream Sources]]
+Related: [[Linting and Type Checking]] · [[Testing Strategy]] ·
+[[Implementation Playbook]] · [[Upstream Sources]]
