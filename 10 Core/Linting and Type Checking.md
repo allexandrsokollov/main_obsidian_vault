@@ -56,6 +56,20 @@ uv run mypy ${CODE_DIRS} ${TEST_DIRS}
 uv run basedpyright
 ```
 
+## Minimum tooling dependencies
+
+Merge these tools into the project's existing development dependencies; do
+not replace unrelated entries in the `dev` list:
+
+```toml
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    "basedpyright>=1.37.4",
+]
+```
+
 ## Minimum Ruff configuration
 
 ```toml
@@ -151,7 +165,7 @@ layout without reducing checked scope.
 ```toml
 [tool.mypy]
 python_version = "3.13"
-files = ["src", "tests"]
+files = ["app", "tests"]
 exclude = [
     "^build/",
     "^dist/",
@@ -208,16 +222,6 @@ remove a plugin only when its framework is not a project dependency.
 
 ## Minimum BasedPyright configuration
 
-Merge BasedPyright into the project's existing development dependencies; do
-not replace the other entries in the `dev` list:
-
-```toml
-[project.optional-dependencies]
-dev = [
-    "basedpyright>=1.37.4",
-]
-```
-
 Configure it as a required supplement to mypy:
 
 ```toml
@@ -225,16 +229,25 @@ Configure it as a required supplement to mypy:
 include = ["app", "tests"]
 exclude = ["build", "dist", ".venv"]
 pythonVersion = "3.13"
-typeCheckingMode = "off"
+typeCheckingMode = "basic"
+reportArgumentType = "none"
+reportCallIssue = "none"
+reportIndexIssue = "none"
 reportInvalidCast = "error"
 ```
 
 `include`, `exclude`, and `pythonVersion` must match the repository. Production
-and test packages must remain in scope. `typeCheckingMode = "off"` is the
-minimum because mypy owns the general strict checks; `reportInvalidCast =
-"error"` remains active as a targeted additional check. A stricter
-configuration may use `basic`, `standard`, or `strict`, but must not disable or
-lower the severity of `reportInvalidCast`.
+and test packages must remain in scope. `typeCheckingMode = "basic"` is the
+minimum; `off` is forbidden. `reportArgumentType`, `reportCallIssue`, and
+`reportIndexIssue` may be disabled because strict mypy owns those overlapping
+checks and they can produce false positives for Pydantic models whose runtime
+defaults are outside generated signatures. These are the only permitted
+disabled basic-mode diagnostics.
+
+`reportInvalidCast = "error"` remains active as a required additional check. A
+stricter configuration may enable any delegated diagnostic or use `standard`
+or `strict`, but must not disable or lower the severity of any other baseline
+diagnostic.
 
 ## Review checklist
 
@@ -245,6 +258,9 @@ lower the severity of `reportInvalidCast`.
 - [ ] Explicit mypy strictness flags are not disabled by an override.
 - [ ] Missing third-party typing is handled rather than globally ignored.
 - [ ] BasedPyright checks all production and test packages.
+- [ ] BasedPyright uses `basic`, `standard`, or `strict` mode.
+- [ ] No BasedPyright diagnostic except `reportArgumentType`,
+      `reportCallIssue`, and `reportIndexIssue` is disabled.
 - [ ] `reportInvalidCast` is enabled at `error` severity or stricter.
 - [ ] Ruff, mypy, and BasedPyright pass using non-mutating verification
       commands.

@@ -28,10 +28,13 @@ first-party module names, applicable framework plugins, and the declared
 Python version must match the repository without reducing the production or
 test scope.
 
-BasedPyright supplements rather than replaces mypy. Its minimum profile keeps
-`reportInvalidCast = "error"` active even when general checking is disabled.
-Enabling a broader checking mode is stricter; disabling or lowering that
-diagnostic is not.
+BasedPyright supplements rather than replaces mypy. Its minimum profile uses
+basic mode and keeps `reportInvalidCast = "error"` active. Only
+`reportArgumentType`, `reportCallIssue`, and `reportIndexIssue` may be disabled
+because strict mypy owns those overlapping checks and they can produce false
+positives for Pydantic runtime defaults. Enabling those diagnostics or a
+broader checking mode is stricter; disabling another basic-mode diagnostic or
+lowering the invalid-cast diagnostic is not.
 
 ## Function argument threshold
 
