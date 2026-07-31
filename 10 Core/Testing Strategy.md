@@ -14,6 +14,11 @@ tags:
 
 Tests should prove externally observable behavior and remain useful through internal refactoring.
 
+Judge each new, materially changed, or specifically reviewed test with
+[[Test Quality Rubric]]. Treat protection of meaningful behavior and proven
+sensitivity to broken production logic as the primary evidence; the aggregate
+score is secondary.
+
 ## Preferred entry points
 
 - HTTP endpoints

@@ -29,6 +29,9 @@ Review for correctness and observable risk before style. Load the applicable not
 
 ## Tests
 
+- [ ] New, materially changed, or suspect tests are assessed with
+  [[Test Quality Rubric]], with meaningful behavior and defect sensitivity
+  reviewed before the total score.
 - [ ] Tests prove observable behavior through a real entry point where practical.
 - [ ] Relevant negative paths and side effects are asserted.
 - [ ] Contract assertions are complete enough to detect drift.

@@ -20,6 +20,14 @@ telemetry work. It extends the pinned upstream Python guidance; it does not
 claim upstream provenance or change the upstream source wording. Explicit user
 requirements and closer repository instructions retain precedence.
 
+## Casts through `object`
+
+The prohibition in [[Clean Code and Architecture]] against double casts through
+`object` is an explicit local policy extension. Such a cast erases the source
+type before asserting the target type, so an invalid-cast checker can no longer
+verify whether the types overlap. Correct the boundary type instead of using
+`object` to make an incompatible cast pass.
+
 ## Linting and type-checking configuration
 
 Keep the mypy `plugins` key in `[tool.mypy]` so relevant plugins apply to

@@ -30,6 +30,7 @@ flowchart TD
     A --> T{"Task context"}
     T -->|"Signatures, DTOs, queries"| Y["Typing and DTO Contracts"]
     T -->|"Behavior change or bug fix"| X["Testing Strategy"]
+    X --> Q["Test Quality Rubric"]
     T -->|"Shared library, integration, compatibility"| B["Integration Boundaries"]
     T -->|"FastAPI"| F["FastAPI Guidelines"]
     T -->|"Django or DRF"| D["Django and DRF Guidelines"]
@@ -49,12 +50,13 @@ flowchart TD
 |---|---|---|
 | Any Python change | [[Clean Code and Architecture]] + [[Linting and Type Checking]] + [[Workflow and Quality Gates]] | Keep code clean; run Ruff, mypy, and BasedPyright with the required baseline or stricter configuration; use Git only for read-only inspection |
 | New code, refactor, architecture | [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
-| Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
+| Bug fix or behavior change | [[Testing Strategy]] + [[Test Quality Rubric]] + [[Implementation Playbook]] | Reproduce or specify behavior, prove the test is sensitive to the behavior, then verify the fix |
+| Test creation or test-quality review | [[Testing Strategy]] + [[Test Quality Rubric]] | Score meaningful protection and defect sensitivity first, then use the total to guide improvement |
 | Shared library, canonical factory, dependency integration | [[Integration Boundaries]] + [[Implementation Playbook]] | One owner and one production construction path |
-| Cross-service transport, compatibility, observability | [[Integration Boundaries]] + [[Testing Strategy]] | Preserve boundary behavior and prove the end-to-end flow |
+| Cross-service transport, compatibility, observability | [[Integration Boundaries]] + [[Testing Strategy]] + [[Test Quality Rubric]] | Preserve boundary behavior and prove the end-to-end flow with sensitive tests |
 | FastAPI endpoint, settings, errors | [[FastAPI Guidelines]] | Thin endpoints, typed settings, centralized errors |
 | Django/DRF view, settings, errors | [[Django and DRF Guidelines]] | Thin views, Django settings, DRF exception mapping |
-| Code review | [[Review Checklist]] plus relevant framework note | Findings tied to observable risk and strict rules |
+| Code review | [[Review Checklist]] plus [[Test Quality Rubric]] when tests are in scope, and the relevant framework note | Findings tied to observable risk and strict rules |
 | Unclear or conflicting rule | [[Interpretation Notes]] | Apply documented precedence; surface ambiguity |
 
 ## Precedence
@@ -73,7 +75,7 @@ Do not use a local pattern to justify a behavior that an applicable strict rule 
 
 ### Framework-agnostic change
 
-[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Typing and DTO Contracts]] → [[Testing Strategy]] → [[Implementation Playbook]]
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Typing and DTO Contracts]] → [[Testing Strategy]] → [[Test Quality Rubric]] → [[Implementation Playbook]]
 
 ### FastAPI change
 
@@ -86,11 +88,11 @@ Framework-agnostic bundle + [[Django and DRF Guidelines]]
 ### Shared infrastructure or cross-service integration
 
 [[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Integration Boundaries]] →
-[[Testing Strategy]] → [[Implementation Playbook]]
+[[Testing Strategy]] → [[Test Quality Rubric]] → [[Implementation Playbook]]
 
 ### Review only
 
-[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Review Checklist]] → relevant core/framework note
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Review Checklist]] → [[Test Quality Rubric]] when tests are in scope → relevant core/framework note
 
 ## Source boundary
 

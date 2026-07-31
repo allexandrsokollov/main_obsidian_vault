@@ -42,7 +42,22 @@ Production code should be easy to read, easy to change, and hard to misuse.
 - Framework and persistence details embedded in core domain functions.
 - Speculative abstractions without repeated need.
 - Broad `noqa`, `type: ignore`, or coverage suppressions.
+- Double casts through `object` that erase the source type to force an otherwise
+  invalid cast past the type checker.
 - Local imports used to conceal circular dependencies.
+
+Never use an intermediate `cast(object, ...)` to manufacture compatibility:
+
+```python
+client_factory = cast(
+    Callable[[UUID, str], VaultWrapperProtocol],
+    cast(object, create_rpc_client(VaultWrapperProtocol, get_broker())),
+)
+```
+
+`cast()` performs no runtime conversion. The inner cast discards the type
+evidence that the outer cast should validate, defeating the purpose of invalid-
+cast checking. Correct the factory or boundary type instead.
 
 ## Design review prompts
 
