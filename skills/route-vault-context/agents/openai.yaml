@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vault Router"
+  short_description: "Load relevant guidance from the local vault"
+  default_prompt: "Use $route-vault-context to load only the vault guidance relevant to this task."
