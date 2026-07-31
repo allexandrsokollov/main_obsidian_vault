@@ -12,42 +12,37 @@ tags:
 
 # Codex Instruction Map
 
-Put each instruction at the narrowest scope where it remains true.
+Put each instruction at its narrowest durable scope.
 
-| Surface | Put here | Keep out |
+| Scope | Surface |
+|---|---|
+| Across tasks and repositories | Personalization or personal `AGENTS.md` |
+| One repository | Repository `AGENTS.md` |
+| One subtree | Nested `AGENTS.md` or override |
+| Repeated workflow | Skill |
+| Accepted architecture or handoff | Project note |
+| One task | Task prompt |
+
+Specific `AGENTS.md` files override broader ones. Do not duplicate rules. Codex
+discovers them at task start, so start a fresh task after changing them.
+
+## Task routing
+
+| Task signal | Load | Stop when |
 |---|---|---|
-| Personalization or personal `AGENTS.md` | Universal style and cross-repository defaults | Project rules or duplicates |
-| Repository `AGENTS.md` | Layout, commands, architecture, language policy, done criteria | Personal style |
-| Nested `AGENTS.md` or override | Genuine subtree differences | Repeated parent rules |
-| Skill | Repeated specialized workflow and resources | One-off task state |
-| Project note | Accepted architecture, compatibility, and handoffs | Logs and rejected options |
-| Task prompt | Goal, relevant context, constraints, done condition | Durable rules |
-
-Instruction chain: short global style → repository contract → mapped notes loaded
-on demand → accepted decisions → compact task handoff. More specific
-`AGENTS.md` files override broader ones; do not duplicate rules across layers.
-Codex discovers them at task start, so use a fresh task after changing them.
-
-Use [[Codex Context Continuity]] only for cross-task work, noisy exploration, or
-reusable lessons.
+| Placement or personalization | [[Codex Instruction Strategy#Personalization]] | Surface and scope settled |
+| Repository contract | [[Codex Instruction Strategy#Repository contract]] | Rules, commands, and done criteria settled |
+| Task prompt or plan | [[Codex Instruction Strategy#Task and plan]] | Goal, context, constraints, and evidence known |
+| Material open choice | [[Codex Context Continuity#Decision checkpoint]] | Choices accepted or explicitly open |
+| Noisy exploration or handoff | [[Codex Context Continuity#Compact handoff]] | Truth, evidence, risks, and next action captured |
+| Retrospective | [[Codex Context Continuity#Retrospective]] | Durable layer identified |
+| Current Codex fact | [[Codex Product Sources]], then official docs if needed | Verified or bounded uncertainty |
+| Loading audit | Use the prompt below | Sources, precedence, rules, and conflicts known |
 
 ## Language routing
 
-- Python: point to [[Python Guidelines Context Map]] or a pinned local copy.
-- Go: use a pinned repository map or skill; this vault does not mirror the
-  [upstream guide](https://github.com/allexandrsokollov/guidelines-golang).
-- Mixed: keep common rules at root and language rules in the nearest subtree.
-
-For non-trivial tasks:
-
-```text
-Goal: <observable result>
-Context: <relevant evidence>
-Constraints: <material boundaries>
-Done when: <verification>
-```
+Use [[Python Guidelines Context Map]] for Python and a pinned map or skill for
+Go. Put mixed-repository language rules in the nearest subtree.
 
 To audit loading: “List active instruction sources in precedence order,
 summarize only relevant rules, and identify conflicts.”
-
-Related: [[Codex Instruction Strategy]] · [[Codex Context Continuity]] · [[Codex Product Sources]]

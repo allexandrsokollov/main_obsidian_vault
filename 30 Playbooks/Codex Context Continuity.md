@@ -65,6 +65,8 @@ the previous handoff; do not summarize summaries.
 A fresh agent must be able to identify success, current state, fixed decisions,
 boundaries, evidence, risks, and the next action from the handoff alone.
 
+## Retrospective
+
 After repeated correction, update the narrowest durable layer and remove broader
 duplicates.
 
