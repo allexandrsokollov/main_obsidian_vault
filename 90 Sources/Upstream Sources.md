@@ -4,6 +4,7 @@ status: active
 source_repository: https://github.com/allexandrsokollov/guidelines-python
 source_revision: 885b4e41af02a3c432de5086e74d3bd347cc70ca
 retrieved: 2026-07-16
+verified: 2026-07-31
 tags:
   - python
   - sources
@@ -30,6 +31,20 @@ Vault summaries are pinned to revision `885b4e41af02a3c432de5086e74d3bd347cc70ca
 
 - [Settings rules](https://github.com/allexandrsokollov/guidelines-python/blob/885b4e41af02a3c432de5086e74d3bd347cc70ca/django/settings.md) → [[Django and DRF Guidelines]]
 - [Error handling rules](https://github.com/allexandrsokollov/guidelines-python/blob/885b4e41af02a3c432de5086e74d3bd347cc70ca/django/error_handling.md) → [[Django and DRF Guidelines]]
+
+## Supplemental official Python style sources
+
+These sources support local guidance that is not attributed to the pinned
+upstream repository:
+
+- [PEP 8](https://peps.python.org/pep-0008/) → import grouping, module
+  dunder placement, naming, and public/internal interfaces in
+  [[Python Module Organization]]
+- [Python tutorial: Modules](https://docs.python.org/3/tutorial/modules.html) →
+  module execution and import behavior in [[Python Module Organization]]
+- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+  → related-definition grouping, import-time safety, and executable-module
+  structure in [[Python Module Organization]]
 
 ## Maintenance
 

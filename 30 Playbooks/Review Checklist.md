@@ -2,6 +2,7 @@
 type: playbook
 status: active
 scope: python
+verified: 2026-07-31
 tags:
   - python
   - codex
@@ -23,6 +24,8 @@ Review for correctness and observable risk before style. Load the applicable not
 
 - [ ] Business rules are separate from HTTP, ORM, settings, and provider details.
 - [ ] Functions and classes have cohesive responsibilities.
+- [ ] When file structure is in scope, the module follows
+  [[Python Module Organization]] and performs no surprising import-time work.
 - [ ] Side effects are isolated from complex branching.
 - [ ] Exception translation happens at a boundary and preserves cause.
 - [ ] New abstractions remove repeated knowledge rather than anticipate future needs.
