@@ -20,6 +20,18 @@ telemetry work. It extends the pinned upstream Python guidance; it does not
 claim upstream provenance or change the upstream source wording. Explicit user
 requirements and closer repository instructions retain precedence.
 
+## Python module organization
+
+[[Python Module Organization]] is a local synthesis rather than a summary of
+the pinned upstream repository. PEP 8 supplies the import groups, module dunder
+placement, naming, and public-interface conventions. The Python tutorial and
+Google Python Style Guide support the import-time and executable-module rules.
+
+The preference for reader flow, the split indicators, and the rejection of a
+fixed file-length threshold are local design judgments. They apply after
+explicit user requirements and repository-local conventions, and they do not
+justify changing an established public API merely to reorder a file.
+
 ## Casts through `object`
 
 The prohibition in [[Clean Code and Architecture]] against double casts through

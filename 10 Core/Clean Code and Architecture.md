@@ -68,4 +68,5 @@ cast checking. Correct the factory or boundary type instead.
 - Is every error either handled, translated with cause, or allowed to surface intentionally?
 - Is an abstraction removing repeated knowledge, or merely hiding a single use?
 
-Related: [[Typing and DTO Contracts]] · [[Testing Strategy]] · [[FastAPI Guidelines]] · [[Django and DRF Guidelines]]
+Related: [[Python Module Organization]] · [[Typing and DTO Contracts]] ·
+[[Testing Strategy]] · [[FastAPI Guidelines]] · [[Django and DRF Guidelines]]

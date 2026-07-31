@@ -1,6 +1,7 @@
 ---
 type: home
 status: active
+verified: 2026-07-31
 tags:
   - python
   - bash
@@ -33,5 +34,6 @@ relevant set of notes and quality gates.
 
 The vault covers framework-agnostic Python, FastAPI, Django, Django REST
 Framework, and production Bash scripting. Python notes summarize a pinned
-upstream repository. Bash notes synthesize the authoritative references indexed
-in [[Bash Sources]].
+upstream repository plus documented local extensions backed by the supplemental
+sources in [[Upstream Sources]]. Bash notes synthesize the authoritative
+references indexed in [[Bash Sources]].
