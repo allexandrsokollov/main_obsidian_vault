@@ -12,6 +12,14 @@ tags:
 
 This register makes source ambiguity explicit instead of silently inventing policy.
 
+## Local retrospective extensions
+
+[[Integration Boundaries]] records local collaboration preferences extracted
+from a 2026-07-31 retrospective about shared-library, NATS, correlation, and
+telemetry work. It extends the pinned upstream Python guidance; it does not
+claim upstream provenance or change the upstream source wording. Explicit user
+requirements and closer repository instructions retain precedence.
+
 ## Function argument threshold
 
 The upstream typing guide contains conflicting phrasings:
