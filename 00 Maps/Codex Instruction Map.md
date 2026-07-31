@@ -2,7 +2,7 @@
 type: map-of-content
 status: active
 scope: codex
-verified: 2026-07-23
+verified: 2026-07-31
 tags:
   - codex
   - personalization
@@ -12,66 +12,42 @@ tags:
 
 # Codex Instruction Map
 
-Put each instruction at the narrowest scope where it remains true. This reduces repeated context, conflicts, and stale rules.
-
-```mermaid
-flowchart TD
-    I["Instruction"] --> Q{"Where is it true?"}
-    Q -->|"Across chats and repositories"| P["Personalization / personal AGENTS.md"]
-    Q -->|"One repository"| R["Repository AGENTS.md"]
-    Q -->|"One subtree"| N["Nested AGENTS.md or AGENTS.override.md"]
-    Q -->|"One kind of repeated task"| S["Skill"]
-    Q -->|"Accepted decisions reused across tasks"| C["Project context note"]
-    Q -->|"One task only"| T["Task prompt"]
-    R --> K["Knowledge maps and playbooks"]
-    N --> K
-    C --> K
-```
-
-## Placement rules
+Put each instruction at the narrowest scope where it remains true.
 
 | Surface | Put here | Keep out |
 |---|---|---|
-| Settings → Personalization | Stable collaboration preferences that apply everywhere | Repository commands, language-specific details, long checklists |
-| Personal `AGENTS.md` | Durable cross-repository defaults and routing | Duplicates of Personalization or project-only rules |
-| Repository `AGENTS.md` | Layout, commands, architecture, language policy, definition of done | Personal tone preferences and unrelated repositories |
-| Nested `AGENTS.md` or `AGENTS.override.md` | Rules for a specific package or service | General repository rules already stated above |
-| Project context note | Accepted architecture, compatibility boundaries, current state, and compact handoffs | Exploration logs, rejected alternatives, raw command output |
-| Skill | A repeated workflow with specialized references or scripts | One-off task context |
-| Task prompt | Goal, relevant context, constraints, and done condition | Durable rules that should apply next time |
+| Personalization or personal `AGENTS.md` | Universal style and cross-repository defaults | Project rules or duplicates |
+| Repository `AGENTS.md` | Layout, commands, architecture, language policy, done criteria | Personal style |
+| Nested `AGENTS.md` or override | Genuine subtree differences | Repeated parent rules |
+| Skill | Repeated specialized workflow and resources | One-off task state |
+| Project note | Accepted architecture, compatibility, and handoffs | Logs and rejected options |
+| Task prompt | Goal, relevant context, constraints, done condition | Durable rules |
 
-## Recommended chain
+Instruction chain: short global style → repository contract → mapped notes loaded
+on demand → accepted decisions → compact task handoff. More specific
+`AGENTS.md` files override broader ones; do not duplicate rules across layers.
+Codex discovers them at task start, so use a fresh task after changing them.
 
-1. Personalization supplies a short working style.
-2. Repository `AGENTS.md` supplies the concrete engineering contract.
-3. The applicable context map loads deeper knowledge on demand.
-4. A decision checkpoint settles material choices before substantial implementation.
-5. A compact handoff carries only accepted decisions into implementation.
-6. The task prompt names the result and completion evidence.
-
-Codex discovers `AGENTS.md` once per run/session, from global scope through the repository path. More specific files appear later and override broader guidance. Avoid duplicating the same rule at several layers.
-
-Use [[Codex Context Continuity]] when a plan spans multiple tasks, a long exploration
-would pollute implementation context, or a retrospective reveals missing durable
-guidance.
+Use [[Codex Context Continuity]] only for cross-task work, noisy exploration, or
+reusable lessons.
 
 ## Language routing
 
-- Python repository: repository `AGENTS.md` points to [[Python Guidelines Context Map]] or to a pinned copy available inside that repository.
-- Go repository: use a repository-local map or skill based on [guidelines-golang](https://github.com/allexandrsokollov/guidelines-golang). The current vault does not yet mirror that repository.
-- Mixed repository: put common rules at the root and language-specific routing in the closest relevant subtree.
+- Python: point to [[Python Guidelines Context Map]] or a pinned local copy.
+- Go: use a pinned repository map or skill; this vault does not mirror the
+  [upstream guide](https://github.com/allexandrsokollov/guidelines-golang).
+- Mixed: keep common rules at root and language rules in the nearest subtree.
 
-## Verification
+For non-trivial tasks:
 
-At the start of a fresh Codex task, ask:
+```text
+Goal: <observable result>
+Context: <relevant evidence>
+Constraints: <material boundaries>
+Done when: <verification>
+```
 
-> List the active instruction sources in precedence order. Summarize only the rules relevant to this task and identify conflicts.
-
-Then give the task using:
-
-> Goal: …  
-> Context: …  
-> Constraints: …  
-> Done when: …
+To audit loading: “List active instruction sources in precedence order,
+summarize only relevant rules, and identify conflicts.”
 
 Related: [[Codex Instruction Strategy]] · [[Codex Context Continuity]] · [[Codex Product Sources]]

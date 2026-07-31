@@ -1,26 +1,32 @@
-# Codex knowledge-vault instructions
+# Knowledge-vault instructions
 
-This workspace is a knowledge vault, not an application repository.
+This workspace contains guidance, not application code.
 
-## Context loading
+## Routing
 
-1. For Python work, start at `00 Maps/Python Guidelines Context Map.md` and read `10 Core/Workflow and Quality Gates.md`.
-2. Load only the core and framework notes selected by the Python context map.
-3. Use `30 Playbooks/Implementation Playbook.md` for changes and `30 Playbooks/Review Checklist.md` for reviews.
-4. Consult `90 Sources/Interpretation Notes.md` when Python wording or precedence is unclear.
-5. For Codex configuration or instruction-design work, start at `00 Maps/Codex Instruction Map.md`, then read `30 Playbooks/Codex Instruction Strategy.md`.
-6. For retrospectives, cross-task context persistence, or planning-to-implementation handoffs, also read `30 Playbooks/Codex Context Continuity.md`.
+- Python: read `00 Maps/Python Guidelines Context Map.md` and
+  `10 Core/Workflow and Quality Gates.md`, then only the notes they select. For
+  changes use `30 Playbooks/Implementation Playbook.md`; for reviews use
+  `30 Playbooks/Review Checklist.md`. Consult `90 Sources/Interpretation Notes.md`
+  only for unclear wording or precedence.
+- Codex instruction design: read `00 Maps/Codex Instruction Map.md`, then
+  `30 Playbooks/Codex Instruction Strategy.md`.
+- Retrospectives or cross-task handoffs: also read
+  `30 Playbooks/Codex Context Continuity.md`.
 
-## Operating rules
+Do not load unrelated vault notes.
 
-- Treat rules marked **Required** or **Forbidden** as strict unless the user explicitly approves a documented exception.
-- Prefer the existing repository's local conventions when they do not conflict with an applicable strict rule.
-- State assumptions that affect behavior, API, tests, or architecture.
-- Do only the minimum work needed to satisfy the request, including code changes and non-code actions; do not add speculative abstractions or unrelated cleanup.
-- For behavior changes, add or update behavior-focused tests in the same change.
-- Run the smallest relevant tests plus `ruff` and `mypy`; report any check that cannot run.
-- Never weaken lint or type-check configuration to make checks pass.
-- Agents may run read-only Git commands to inspect repository state and history, including `git status`, `git diff`, `git log`, `git show`, and `git blame`.
-- Do not run Git commands that modify the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state. All Git mutations remain human-only.
+## Contract
 
-The source of truth for navigation is the context map. The upstream repository remains authoritative for exact wording except where [[Interpretation Notes]] documents a local interpretation or override.
+- **Required** and **Forbidden** rules are strict unless the user approves a
+  documented exception. Otherwise prefer compatible repository conventions.
+- State assumptions affecting behavior, API, tests, or architecture.
+- Make the smallest sufficient change; avoid speculative work and unrelated
+  cleanup. Preserve unrelated user work.
+- Behavior changes require behavior-focused tests. Run the narrowest relevant
+  tests plus `ruff` and `mypy`; report skipped checks and remaining risk. Never
+  weaken lint or type configuration.
+- Git inspection is allowed; Git mutations are human-only.
+
+Context maps control navigation. Upstream sources control exact wording unless
+[[Interpretation Notes]] records a local interpretation.
