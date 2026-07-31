@@ -40,6 +40,9 @@ tags:
 
 - Change only files and lines required by the request.
 - Add or update tests in the same change.
+- Assess each new or materially changed test with [[Test Quality Rubric]]. For
+  critical or questionable tests, establish sensitivity with a pre-fix
+  failure, targeted mutation, or temporary defect when practical.
 - Avoid unrelated formatting, renaming, cleanup, and refactoring.
 - Keep suppressions exceptional; solve the underlying design issue where practical.
 
@@ -48,11 +51,12 @@ tags:
 Run the narrowest useful checks first:
 
 1. Focused test for changed behavior
-2. Related test module or package
-3. Broader suite when risk or project practice requires it
-4. `ruff` on the changed scope
-5. `mypy` on the changed scope
-6. `basedpyright` on the changed scope
+2. Test-quality review with [[Test Quality Rubric]]
+3. Related test module or package
+4. Broader suite when risk or project practice requires it
+5. `ruff` on the changed scope
+6. `mypy` on the changed scope
+7. `basedpyright` on the changed scope
 
 Report the exact command and blocker when a check cannot run. Do not claim completion from inspection alone when executable verification is available.
 
@@ -60,6 +64,9 @@ Report the exact command and blocker when a check cannot run. Do not claim compl
 
 - Requested behavior is implemented.
 - Tests cover success and relevant failure paths.
+- New or materially changed tests have credible evidence on the rubric's two
+  primary criteria; score bands guide improvement rather than act as an
+  automatic gate.
 - Changed behavior is verified through a real entry point when practical.
 - `ruff`, `mypy`, and `basedpyright` pass without weakened configuration.
 - Every changed line serves the request.
