@@ -27,11 +27,14 @@ flowchart TD
     T -->|"Design, implementation, refactor"| C["Clean Code and Architecture"]
     T -->|"Signatures, DTOs, queries"| Y["Typing and DTO Contracts"]
     T -->|"Behavior change or bug fix"| X["Testing Strategy"]
+    T -->|"Shared library, integration, compatibility"| B["Integration Boundaries"]
     T -->|"FastAPI"| F["FastAPI Guidelines"]
     T -->|"Django or DRF"| D["Django and DRF Guidelines"]
     C --> I["Implementation Playbook"]
     Y --> I
     X --> I
+    B --> I
+    B --> X
     F --> I
     D --> I
     A -->|"Review request"| R["Review Checklist"]
@@ -44,6 +47,8 @@ flowchart TD
 | Any Python change | [[Workflow and Quality Gates]] | Use Git only for read-only inspection and run quality gates |
 | New code, refactor, architecture | [[Clean Code and Architecture]] + [[Typing and DTO Contracts]] | Readable boundaries and explicit contracts |
 | Bug fix or behavior change | [[Testing Strategy]] + [[Implementation Playbook]] | Reproduce or specify behavior, then verify the fix |
+| Shared library, canonical factory, dependency integration | [[Integration Boundaries]] + [[Implementation Playbook]] | One owner and one production construction path |
+| Cross-service transport, compatibility, observability | [[Integration Boundaries]] + [[Testing Strategy]] | Preserve boundary behavior and prove the end-to-end flow |
 | FastAPI endpoint, settings, errors | [[FastAPI Guidelines]] | Thin endpoints, typed settings, centralized errors |
 | Django/DRF view, settings, errors | [[Django and DRF Guidelines]] | Thin views, Django settings, DRF exception mapping |
 | Code review | [[Review Checklist]] plus relevant framework note | Findings tied to observable risk and strict rules |
@@ -74,6 +79,11 @@ Framework-agnostic bundle + [[FastAPI Guidelines]]
 ### Django or DRF change
 
 Framework-agnostic bundle + [[Django and DRF Guidelines]]
+
+### Shared infrastructure or cross-service integration
+
+[[Workflow and Quality Gates]] → [[Integration Boundaries]] →
+[[Testing Strategy]] → [[Implementation Playbook]]
 
 ### Review only
 
