@@ -31,11 +31,6 @@ Vault summaries are pinned to revision `885b4e41af02a3c432de5086e74d3bd347cc70ca
 - [Settings rules](https://github.com/allexandrsokollov/guidelines-python/blob/885b4e41af02a3c432de5086e74d3bd347cc70ca/django/settings.md) → [[Django and DRF Guidelines]]
 - [Error handling rules](https://github.com/allexandrsokollov/guidelines-python/blob/885b4e41af02a3c432de5086e74d3bd347cc70ca/django/error_handling.md) → [[Django and DRF Guidelines]]
 
-## Additional supplied source
-
-- CROC Blog, “Linters and type checking config,” reviewed from the
-  user-supplied HTML export on 2026-07-31 → [[Linting and Type Checking]]
-
 ## Maintenance
 
 When updating the vault:
