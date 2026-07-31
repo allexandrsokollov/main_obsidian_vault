@@ -1,10 +1,11 @@
 ---
 type: guideline
 status: active
-scope: python
+scope: code
 verified: 2026-07-31
 tags:
   - python
+  - bash
   - testing
   - review
   - quality-gates
@@ -78,4 +79,5 @@ Sensitivity evidence is valuable only when the test fails because the claimed
 behavior changed.
 
 Related: [[Testing Strategy]] · [[Workflow and Quality Gates]] ·
-[[Review Checklist]]
+[[Review Checklist]] · [[Bash Testing Strategy]] ·
+[[Bash Workflow and Quality Gates]] · [[Bash Review Checklist]]

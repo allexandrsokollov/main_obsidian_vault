@@ -6,6 +6,8 @@ This workspace contains guidance, not application code.
 
 - Python: read `00 Maps/Python Guidelines Context Map.md` plus
   `10 Core/Workflow and Quality Gates.md`, then follow the map.
+- Bash: read `00 Maps/Bash Guidelines Context Map.md` plus
+  `10 Core/Bash Workflow and Quality Gates.md`, then follow the map.
 - Codex instruction design, planning, retrospectives, or handoffs: read
   `00 Maps/Codex Instruction Map.md`, then follow its task-routing table.
 
@@ -19,5 +21,9 @@ Load only routed context; do not follow `Related` links by default.
 - Python behavior changes require behavior tests and the narrowest checks plus
   `ruff` and `mypy`. Never weaken quality configuration; report skipped checks
   and risk.
-- Context maps control navigation. Upstream sources control exact wording
-  unless [[Interpretation Notes]] records a local interpretation.
+- Bash behavior changes require behavior tests and the narrowest checks plus
+  `bash -n`, ShellCheck, and `shfmt`. Never weaken quality configuration;
+  report skipped checks and risk.
+- Context maps control navigation. Source indexes control exact wording; record
+  local judgment in [[Interpretation Notes]] or
+  [[Bash Sources#Local interpretations]], as applicable.

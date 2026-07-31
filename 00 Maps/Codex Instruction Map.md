@@ -41,8 +41,9 @@ discovers them at task start, so start a fresh task after changing them.
 
 ## Language routing
 
-Use [[Python Guidelines Context Map]] for Python and a pinned map or skill for
-Go. Put mixed-repository language rules in the nearest subtree.
+Use [[Python Guidelines Context Map]] for Python,
+[[Bash Guidelines Context Map]] for Bash, and a pinned map or skill for Go. Put
+mixed-repository language rules in the nearest subtree.
 
 To audit loading: “List active instruction sources in precedence order,
 summarize only relevant rules, and identify conflicts.”
