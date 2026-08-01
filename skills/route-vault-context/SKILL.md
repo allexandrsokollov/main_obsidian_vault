@@ -1,12 +1,21 @@
 ---
 name: route-vault-context
-description: Route Python implementation, review, integration, and compatibility tasks, plus Codex configuration, instruction-design, planning, retrospective, and handoff tasks, into the relevant notes in the local Markdown knowledge vault. Use when Codex needs guidance from /Users/allxndrskllv/Documents/mian without loading the entire vault, or when auditing that vault's links and verification metadata.
+description: Route Python implementation, review, integration, and compatibility tasks, plus Codex configuration, instruction-design, planning, retrospective, and handoff tasks, into the relevant notes in a local Markdown knowledge vault. Use when Codex needs vault guidance without loading the entire vault, or when auditing that vault's links and verification metadata.
 ---
 
 # Route Vault Context
 
-Use `/Users/allxndrskllv/Documents/mian` as the vault root. Resolve `<skill-dir>`
-to the directory containing this `SKILL.md` before running a bundled script.
+Resolve both locations before running a bundled script:
+
+- `<skill-dir>` is the directory containing this `SKILL.md`.
+- `<vault-root>` is the user-provided or repository-configured absolute path to
+  the vault. If no path is provided, use the current workspace only when it
+  contains `00 Maps/Codex Instruction Map.md` and
+  `00 Maps/Python Guidelines Context Map.md`.
+
+Do not assume a username, home directory, or checkout location. If the vault
+cannot be located, report that instead of relying on remembered guidance. The
+commands below use `python3`; use another local Python 3 launcher when needed.
 
 ## Route a task
 
@@ -17,9 +26,9 @@ to the directory containing this `SKILL.md` before running a bundled script.
 3. Run:
 
    ```bash
-   python3 <skill-dir>/scripts/vault_router.py route \
-     --vault /Users/allxndrskllv/Documents/mian \
-     --map <python-or-codex> \
+   python3 -B "<skill-dir>/scripts/vault_router.py" route \
+     --vault "<vault-root>" \
+     --map "<python-or-codex>" \
      --signal "<exact task signal>"
    ```
 
@@ -31,9 +40,9 @@ to the directory containing this `SKILL.md` before running a bundled script.
 If the applicable signal is uncertain, inspect the deterministic choices first:
 
 ```bash
-python3 <skill-dir>/scripts/vault_router.py signals \
-  --vault /Users/allxndrskllv/Documents/mian \
-  --map <python-or-codex>
+python3 -B "<skill-dir>/scripts/vault_router.py" signals \
+  --vault "<vault-root>" \
+  --map "<python-or-codex>"
 ```
 
 Do not silently choose between ambiguous signals or note names. Explicit user
@@ -45,8 +54,8 @@ guidance.
 Use `search` for bounded lexical retrieval with frontmatter filters:
 
 ```bash
-python3 <skill-dir>/scripts/vault_router.py search \
-  --vault /Users/allxndrskllv/Documents/mian \
+python3 -B "<skill-dir>/scripts/vault_router.py" search \
+  --vault "<vault-root>" \
   --query "transport compatibility" \
   --scope python --status active --tag integration
 ```
@@ -59,8 +68,8 @@ wiki-links. Prefer these bounded operations over reading unrelated whole notes.
 For vault maintenance or a loading audit, run:
 
 ```bash
-python3 <skill-dir>/scripts/vault_router.py audit \
-  --vault /Users/allxndrskllv/Documents/mian \
+python3 -B "<skill-dir>/scripts/vault_router.py" audit \
+  --vault "<vault-root>" \
   --stale-after-days 180
 ```
 
