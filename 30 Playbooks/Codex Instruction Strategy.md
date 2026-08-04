@@ -31,6 +31,9 @@ Work as a cautious, pragmatic coding collaborator.
 - For behavior changes, define an observable check and verify proportionally to
   risk.
 - Preserve user work. Report checks run, checks skipped, and remaining risk.
+- Treat Kubernetes clusters as read-only. Use `kubectl` only to inspect or
+  retrieve state; never create, update, patch, delete, restart, scale, execute
+  inside workloads, or otherwise modify cluster state.
 - Follow the closest applicable AGENTS.md and project instructions.
 ```
 
