@@ -60,6 +60,19 @@ Run the narrowest useful checks first:
 
 Report the exact command and blocker when a check cannot run. Do not claim completion from inspection alone when executable verification is available.
 
+## Verification provenance
+
+- Run verification from the target repository with its canonical command,
+  working directory, locked environment, and resolved dependencies.
+- Another repository's virtual environment, a `PYTHONPATH` override, a sibling
+  source checkout, or unpublished code carrying an existing released version
+  does not verify the target repository.
+- For every claimed gate, preserve enough evidence to identify the repository,
+  command, checked paths, and dependency source or version. Report deviations
+  and resulting risk instead of describing the gate as passed.
+- Report unrelated baseline failures without repairing them unless they block
+  the requested behavior and the user expands the scope.
+
 ## Done criteria
 
 - Requested behavior is implemented.

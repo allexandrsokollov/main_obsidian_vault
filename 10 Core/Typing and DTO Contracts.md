@@ -29,6 +29,10 @@ Every meaningful data shape must be explicit: typed signatures, typed DTOs, type
 - Declare DTOs with `@dataclass(slots=True)` by default.
 - Name by role and intent: `CreateUserDto`, `UpdateOrderDto`, `UserResponseDto`, `SyncVaultGroupCommand`.
 - Separate DTOs when input and output meanings differ.
+- Use one DTO for one semantic contract. Split or nest DTOs only when the parts
+  have meaningfully different ownership, lifecycle, validation, or reuse; do
+  not introduce structural layers merely because fields arrive through
+  different framework context paths.
 - Return a DTO rather than an anonymous dictionary when the result represents a business entity or contract.
 
 Avoid generic names such as `Data`, `Payload`, `Info`, `Params`, and `RequestObject`.
@@ -36,6 +40,15 @@ Avoid generic names such as `Data`, `Payload`, `Info`, `Params`, and `RequestObj
 ## `Any` boundary
 
 Treat `Any` as a local escape hatch for framework internals, untyped libraries, raw ORM filter dictionaries, or short compatibility layers. Do not let it spread into core business code.
+
+## Protocol conformance
+
+- Before implementing or changing a protocol, compare every public method's
+  parameter names, types, order, optionality, and return type.
+- Treat framework-injected parameters as part of the implementation boundary
+  and use the framework's canonical dependency mechanism.
+- Do not introduce an `Any` alias, duplicate protocol, or suppression merely to
+  manufacture conformance.
 
 ## ORM query filters
 
@@ -50,8 +63,10 @@ Treat `Any` as a local escape hatch for framework internals, untyped libraries, 
 - [ ] Containers and optionals describe the actual shape.
 - [ ] Structured business data uses an intent-named DTO.
 - [ ] DTOs use `@dataclass(slots=True)` unless a documented boundary requires another model.
+- [ ] DTO boundaries reflect semantic differences rather than framework access paths.
 - [ ] Meaningful results are not anonymous dictionaries.
 - [ ] `Any` is confined to a technical boundary.
+- [ ] Protocol implementations match the public contract without manufactured type escapes.
 - [ ] ORM filter construction is centralized and typed.
 
 Related: [[Clean Code and Architecture]] · [[Interpretation Notes]] · [[Upstream Sources]]

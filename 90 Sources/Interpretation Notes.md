@@ -20,6 +20,16 @@ telemetry work. It extends the pinned upstream Python guidance; it does not
 claim upstream provenance or change the upstream source wording. Explicit user
 requirements and closer repository instructions retain precedence.
 
+A 2026-08-05 retrospective added further local execution rules to
+[[Workflow and Quality Gates]], [[Linting and Type Checking]],
+[[Integration Boundaries]], [[Typing and DTO Contracts]],
+[[Observability and Logging]], [[Implementation Playbook]], and
+[[Codex Context Continuity]]. These rules require trustworthy verification
+provenance, diagnostic sensitivity checks, explicit cross-boundary contracts,
+minimal semantic DTOs, observable logging acceptance criteria, and a correction
+checkpoint after repeated redesign. They are local collaboration policy, not
+claims about the pinned upstream source.
+
 ## Python module organization
 
 [[Python Module Organization]] is a local synthesis rather than a summary of

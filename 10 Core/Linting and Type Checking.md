@@ -2,7 +2,7 @@
 type: guideline
 status: active
 scope: python
-verified: 2026-07-31
+verified: 2026-08-05
 tags:
   - python
   - ruff
@@ -34,6 +34,11 @@ tags:
   relaxation; all production and test packages must remain in scope.
 - Suppressions must be local, narrow, and explained. Do not weaken shared
   configuration to make a failure disappear.
+- When configuration is added or changed to detect a specific defect, prove the
+  diagnostic with a positive control: the canonical command must fail on a
+  minimal known violation and pass after that violation is corrected. A green
+  run on the current repository does not prove that the rule is active or that
+  the intended paths are included.
 
 ## Commands
 
@@ -262,6 +267,8 @@ diagnostic.
 - [ ] No BasedPyright diagnostic except `reportArgumentType`,
       `reportCallIssue`, and `reportIndexIssue` is disabled.
 - [ ] `reportInvalidCast` is enabled at `error` severity or stricter.
+- [ ] A diagnostic added for a specific defect fails on a known-invalid probe
+      and passes after correction.
 - [ ] Ruff, mypy, and BasedPyright pass using non-mutating verification
       commands.
 

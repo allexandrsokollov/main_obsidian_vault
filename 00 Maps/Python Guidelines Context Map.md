@@ -33,6 +33,7 @@ flowchart TD
     T -->|"Behavior change or bug fix"| X["Testing Strategy"]
     X --> Q["Test Quality Rubric"]
     T -->|"Shared library, integration, compatibility"| B["Integration Boundaries"]
+    T -->|"Logging, tracing, diagnostic events"| O["Observability and Logging"]
     T -->|"FastAPI"| F["FastAPI Guidelines"]
     T -->|"Django or DRF"| D["Django and DRF Guidelines"]
     C --> I["Implementation Playbook"]
@@ -41,6 +42,8 @@ flowchart TD
     X --> I
     B --> I
     B --> X
+    O --> X
+    O --> I
     F --> I
     D --> I
     A -->|"Review request"| R["Review Checklist"]
@@ -56,7 +59,9 @@ flowchart TD
 | Bug fix or behavior change | [[Testing Strategy]] + [[Test Quality Rubric]] + [[Implementation Playbook]] | Reproduce or specify behavior, prove the test is sensitive to the behavior, then verify the fix |
 | Test creation or test-quality review | [[Testing Strategy]] + [[Test Quality Rubric]] | Score meaningful protection and defect sensitivity first, then use the total to guide improvement |
 | Shared library, canonical factory, dependency integration | [[Integration Boundaries]] + [[Implementation Playbook]] | One owner and one production construction path |
-| Cross-service transport, compatibility, observability | [[Integration Boundaries]] + [[Testing Strategy]] + [[Test Quality Rubric]] | Preserve boundary behavior and prove the end-to-end flow with sensitive tests |
+| Logging or diagnostic observability | [[Observability and Logging]] + [[Testing Strategy]] + [[Test Quality Rubric]] + [[Implementation Playbook]] | Define the event matrix, preserve redaction, and prove required events with sensitive tests |
+| Cross-service transport or compatibility | [[Integration Boundaries]] + [[Testing Strategy]] + [[Test Quality Rubric]] + [[Implementation Playbook]] | Preserve boundary behavior and prove the end-to-end flow with sensitive tests |
+| Cross-service tracing or telemetry | [[Integration Boundaries]] + [[Observability and Logging]] + [[Testing Strategy]] + [[Test Quality Rubric]] + [[Implementation Playbook]] | Preserve transport contracts while proving ingress, carrier, receiver, and observable telemetry |
 | FastAPI endpoint, settings, errors | [[FastAPI Guidelines]] | Thin endpoints, typed settings, centralized errors |
 | Django/DRF view, settings, errors | [[Django and DRF Guidelines]] | Thin views, Django settings, DRF exception mapping |
 | Code review | [[Review Checklist]] plus [[Test Quality Rubric]] when tests are in scope, [[Python Module Organization]] when file structure is in scope, and the relevant framework note | Findings tied to observable risk and strict rules |
@@ -98,6 +103,19 @@ Framework-agnostic bundle + [[Django and DRF Guidelines]]
 
 [[Clean Code and Architecture]] → [[Linting and Type Checking]] → [[Workflow and Quality Gates]] → [[Integration Boundaries]] →
 [[Testing Strategy]] → [[Test Quality Rubric]] → [[Implementation Playbook]]
+
+### Logging or diagnostic observability
+
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] →
+[[Workflow and Quality Gates]] → [[Observability and Logging]] →
+[[Testing Strategy]] → [[Test Quality Rubric]] → [[Implementation Playbook]]
+
+### Cross-service tracing or telemetry
+
+[[Clean Code and Architecture]] → [[Linting and Type Checking]] →
+[[Workflow and Quality Gates]] → [[Integration Boundaries]] →
+[[Observability and Logging]] → [[Testing Strategy]] →
+[[Test Quality Rubric]] → [[Implementation Playbook]]
 
 ### Review only
 

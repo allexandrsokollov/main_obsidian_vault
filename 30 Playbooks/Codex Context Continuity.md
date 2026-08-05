@@ -2,7 +2,7 @@
 type: playbook
 status: active
 scope: codex
-verified: 2026-07-31
+verified: 2026-08-05
 tags:
   - codex
   - context
@@ -69,5 +69,20 @@ boundaries, evidence, risks, and the next action from the handoff alone.
 
 After repeated correction, update the narrowest durable layer and remove broader
 duplicates.
+
+Classify each correction before promoting it:
+
+- An existing-rule violation needs a stronger execution or verification
+  checkpoint, not duplicated wording.
+- A missing rule belongs at the narrowest durable scope that would have
+  prevented the failure.
+- A task-local preference remains in the task or decision checkpoint and must
+  not become universal guidance.
+
+After two corrections on the same design axis, do not perform another
+speculative rewrite. Capture the accepted behavior, rejected approaches, scope
+limit, required evidence, and any genuinely open material decision. Pause only
+when that decision could change behavior, compatibility, architecture, tests,
+or safety; otherwise implement the most direct accepted design.
 
 Related: [[Codex Instruction Map]] · [[Codex Instruction Strategy]] · [[Codex Product Sources]]
