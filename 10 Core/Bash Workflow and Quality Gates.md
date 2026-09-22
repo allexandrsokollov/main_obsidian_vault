@@ -17,6 +17,10 @@ tags:
 - Read-only Git inspection is allowed under the repository `AGENTS.md`; Git
   mutations remain human-only.
 - Tests are written or updated with every behavior change.
+- Behavior fixes use separate RED and GREEN stages. Keep RED test-only: change
+  only the focused behavior test, run it, record the expected behavior failure,
+  confirm there is no production-code diff, and report that evidence. Start
+  production implementation only in the separately authorized GREEN stage.
 - Applicable tests, `bash -n`, ShellCheck, and `shfmt` must pass before
   completion.
 - Portability claims require execution on every supported interpreter/platform,

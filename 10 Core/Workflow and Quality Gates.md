@@ -17,9 +17,10 @@ tags:
   code-review changes, including through a UI, API, CLI, auto-merge, or merge
   queue. The final merge is human-only.
 - Tests are written or updated with every behavior change.
-- Behavior fixes use explicit RED then GREEN checkpoints. First change only the
-  focused behavior test, run it, record the expected behavior failure, and
-  confirm production code is unchanged before implementing the fix.
+- Behavior fixes use separate RED and GREEN stages. Keep RED test-only: change
+  only the focused behavior test, run it, record the expected behavior failure,
+  confirm there is no production-code diff, and report that evidence. Start
+  production implementation only in the separately authorized GREEN stage.
 - Applicable tests, `ruff`, `mypy`, and `basedpyright` must pass before
   completion.
 - Do not weaken, disable, or reconfigure quality rules to silence failures.

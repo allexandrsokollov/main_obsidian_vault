@@ -57,6 +57,13 @@ workflow and safety contract.
 
 ## Local interpretations
 
+### RED-before-GREEN checkpoints
+
+The separate, test-only RED checkpoint in [[Bash Workflow and Quality Gates]]
+is a local collaboration preference rather than wording from the Bash, Bats,
+or style-guide sources. Record the expected behavior failure and confirm there
+is no production-code diff before a separately authorized GREEN stage.
+
 ### Bash versus POSIX `sh`
 
 The guide chooses an explicit dialect instead of a lowest-common-denominator
