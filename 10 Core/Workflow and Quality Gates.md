@@ -13,7 +13,13 @@ tags:
 
 ## Non-negotiable workflow
 
+- Codex must never merge pull requests, merge requests, or equivalent
+  code-review changes, including through a UI, API, CLI, auto-merge, or merge
+  queue. The final merge is human-only.
 - Tests are written or updated with every behavior change.
+- Behavior fixes use explicit RED then GREEN checkpoints. First change only the
+  focused behavior test, run it, record the expected behavior failure, and
+  confirm production code is unchanged before implementing the fix.
 - Applicable tests, `ruff`, `mypy`, and `basedpyright` must pass before
   completion.
 - Do not weaken, disable, or reconfigure quality rules to silence failures.

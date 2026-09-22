@@ -42,6 +42,9 @@ path, explicit compatibility boundaries, and end-to-end evidence.
   variables.
 - For a staged multi-repository change, implement and verify the owning layer
   before updating consumers.
+- For a shared-library or contract change, publish and independently resolve
+  the new artifact from the canonical registry before updating consumer
+  versions or lockfiles.
 - Define production acceptance evidence for infrastructure behavior. Cover the
   ingress, transport metadata, receiving service, and observable result with a
   canary or equivalent smoke test when practical.

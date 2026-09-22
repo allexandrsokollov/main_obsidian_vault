@@ -70,6 +70,11 @@ boundaries, evidence, risks, and the next action from the handoff alone.
 After repeated correction, update the narrowest durable layer and remove broader
 duplicates.
 
+When a correction changes accepted behavior, architecture, environment, or
+acceptance criteria, stop the superseded path. Restate the accepted replacement,
+identify which plans, implementation, and evidence are now stale, and resume
+from the earliest affected checkpoint.
+
 Classify each correction before promoting it:
 
 - An existing-rule violation needs a stronger execution or verification

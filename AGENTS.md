@@ -8,6 +8,9 @@ This workspace contains guidance, not application code.
   `10 Core/Workflow and Quality Gates.md`, then follow the map.
 - Bash: read `00 Maps/Bash Guidelines Context Map.md` plus
   `10 Core/Bash Workflow and Quality Gates.md`, then follow the map.
+- Hyperdrive multi-repository, shared-contract, deployment, ArgoCD, or live
+  acceptance work: read `00 Maps/Hyperdrive Context Map.md`, then follow its
+  task-routing table.
 - Codex instruction design, planning, retrospectives, or handoffs: read
   `00 Maps/Codex Instruction Map.md`, then follow its task-routing table.
 

@@ -30,6 +30,12 @@ minimal semantic DTOs, observable logging acceptance criteria, and a correction
 checkpoint after repeated redesign. They are local collaboration policy, not
 claims about the pinned upstream source.
 
+A 2026-09-22 retrospective added strict RED-before-GREEN checkpoints, canonical
+registry gates for shared contracts, correction rebaselining, and routed
+Hyperdrive delivery and live-acceptance guidance. These are explicit local
+collaboration preferences derived from repeated task steering, not upstream
+Python guidance.
+
 ## Python module organization
 
 [[Python Module Organization]] is a local synthesis rather than a summary of
@@ -86,6 +92,13 @@ Vault interpretation: for a business operation with **five or more parameters**,
 
 The vault compresses rules for retrieval and does not reproduce every upstream example. When exact syntax or wording matters, open the pinned file in [[Upstream Sources]].
 
-## Read-only Git inspection
+## Git execution boundary
 
-The pinned upstream workflow forbids an AI agent from running any Git command. This vault intentionally applies a repository-local exception: agents may run Git commands that only inspect state or history. Any invocation that modifies the working tree, index, refs, configuration, remotes, stash, history, or other local or remote state remains human-only. See [[Workflow and Quality Gates]] for the operational boundary.
+The pinned upstream workflow forbids an AI agent from running any Git command.
+This vault intentionally replaces that restriction with a current-authorization
+boundary. Read-only Git inspection is allowed. Branch, worktree, push, and
+merge-request creation are allowed only when the user currently authorizes them
+and no closer repository instruction forbids them; do not infer authorization
+from an older task. Codex must never merge a pull request or merge request. See
+the active global `AGENTS.md`, [[Workflow and Quality Gates]], and the closest
+repository instructions for the operational boundary.
