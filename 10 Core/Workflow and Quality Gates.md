@@ -26,6 +26,25 @@ tags:
 - Do not weaken, disable, or reconfigure quality rules to silence failures.
 - Keep any unavoidable suppression local and specific, with a concrete explanation.
 
+## Before starting codebase work
+
+This user-required gate applies to every language, before code exploration,
+review, implementation planning, or editing.
+
+- Use the installed `codebase-memory` skill and `codebase-memory-mcp` to create
+  or update the code graph for each repository or worktree in the task's scope.
+- Check `list_projects` and `index_status`, then run `index_repository` for
+  the exact checkout to create a missing graph or refresh an existing graph.
+  Wait for indexing to complete and verify its status before starting work.
+- Keep indexing limited to the repositories in scope. Recheck and refresh the
+  graph when switching checkouts or when source changes make it stale.
+- If the tool is unavailable or indexing fails, report the blocker and stop
+  before codebase work; do not silently skip this gate or claim the graph is
+  current.
+- Follow the skill's coverage checks and source-verification requirements
+  when using graph results; successful indexing alone does not prove complete
+  coverage.
+
 ## Before editing
 
 - Restate the intended behavior in verifiable terms.

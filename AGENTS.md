@@ -4,6 +4,9 @@ This workspace contains guidance, not application code.
 
 ## Routing
 
+- Before codebase work in any language: read and follow
+  `10 Core/Workflow and Quality Gates.md` section
+  `Before starting codebase work`.
 - Python: read `00 Maps/Python Guidelines Context Map.md` plus
   `10 Core/Workflow and Quality Gates.md`, then follow the map.
 - Bash: read `00 Maps/Bash Guidelines Context Map.md` plus
