@@ -36,6 +36,13 @@ Hyperdrive delivery and live-acceptance guidance. These are explicit local
 collaboration preferences derived from repeated task steering, not upstream
 Python guidance.
 
+A 2026-09-28 instruction update added targeted mutation testing after feature
+implementation and baseline test success. The changed production behavior is
+the default mutation scope; relevant surviving and uncovered mutants require
+stronger tests or an explicit disposition. This is a local collaboration
+preference, not wording or a universal score threshold from the pinned upstream
+Python guidance.
+
 ## Python module organization
 
 [[Python Module Organization]] is a local synthesis rather than a summary of

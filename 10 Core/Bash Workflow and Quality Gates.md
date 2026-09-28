@@ -21,6 +21,9 @@ tags:
   only the focused behavior test, run it, record the expected behavior failure,
   confirm there is no production-code diff, and report that evidence. Start
   production implementation only in the separately authorized GREEN stage.
+- After implementing a feature and passing its focused and related tests, run
+  targeted mutation testing against the changed production behavior before
+  claiming the mutation gate passed.
 - Applicable tests, `bash -n`, ShellCheck, and `shfmt` must pass before
   completion.
 - Portability claims require execution on every supported interpreter/platform,
@@ -47,9 +50,9 @@ tags:
 
 - Change only files and lines required by the request.
 - Add or update tests in the same change.
-- Assess each new or materially changed test with [[Test Quality Rubric]]. For
-  critical or questionable tests, establish sensitivity with a pre-fix failure
-  or targeted temporary defect when practical.
+- Assess each new or materially changed test with [[Test Quality Rubric]]. Use
+  the pre-fix RED failure as primary sensitivity evidence for a behavior fix;
+  use the rubric's post-implementation mutation protocol for a feature.
 - Preserve the script's public status and output contracts unless the change is
   explicit.
 - Keep expansions, arrays, filenames, and external-command arguments intact.
@@ -64,13 +67,15 @@ Run the narrowest useful checks first:
 1. Focused behavior test or safe reproduction
 2. Test-quality review with [[Test Quality Rubric]]
 3. Related Bats file or test package
-4. Syntax check with the minimum supported Bash: `bash -n`
-5. ShellCheck on the changed and sourced scope
-6. `shfmt` diff check on the changed and test scope
-7. Broader test suite
-8. Supported Bash-version and operating-system matrix when portability or
+4. Targeted mutation testing for an implemented feature; when no supported
+   runner exists, use the rubric's targeted temporary-defect fallback
+5. Syntax check with the minimum supported Bash: `bash -n`
+6. ShellCheck on the changed and sourced scope
+7. `shfmt` diff check on the changed and test scope
+8. Broader test suite
+9. Supported Bash-version and operating-system matrix when portability or
    platform tools are affected
-9. Safe end-to-end entry point in a disposable environment when practical
+10. Safe end-to-end entry point in a disposable environment when practical
 
 Report the exact command and blocker when a check cannot run. Do not claim
 runtime correctness from syntax or static inspection alone.
@@ -82,6 +87,10 @@ runtime correctness from syntax or static inspection alone.
   effects.
 - New or materially changed tests have credible evidence on the rubric's two
   primary criteria.
+- An implemented feature's changed production behavior has targeted mutation
+  evidence. Relevant surviving and uncovered mutants are resolved or explained;
+  an unavailable mutation run is reported as not run and is not described as a
+  passed gate.
 - `bash -n`, ShellCheck, and `shfmt` pass without weakened configuration.
 - Compatibility-sensitive behavior passes on the declared support matrix.
 - Destructive and privileged paths fail closed and were verified only in an

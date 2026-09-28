@@ -21,6 +21,9 @@ tags:
   only the focused behavior test, run it, record the expected behavior failure,
   confirm there is no production-code diff, and report that evidence. Start
   production implementation only in the separately authorized GREEN stage.
+- After implementing a feature and passing its focused and related tests, run
+  targeted mutation testing against the changed production behavior before
+  claiming the mutation gate passed.
 - Applicable tests, `ruff`, `mypy`, and `basedpyright` must pass before
   completion.
 - Do not weaken, disable, or reconfigure quality rules to silence failures.
@@ -57,9 +60,9 @@ review, implementation planning, or editing.
 
 - Change only files and lines required by the request.
 - Add or update tests in the same change.
-- Assess each new or materially changed test with [[Test Quality Rubric]]. For
-  critical or questionable tests, establish sensitivity with a pre-fix
-  failure, targeted mutation, or temporary defect when practical.
+- Assess each new or materially changed test with [[Test Quality Rubric]]. Use
+  the pre-fix RED failure as primary sensitivity evidence for a behavior fix;
+  use the rubric's post-implementation mutation protocol for a feature.
 - Avoid unrelated formatting, renaming, cleanup, and refactoring.
 - Keep suppressions exceptional; solve the underlying design issue where practical.
 
@@ -70,10 +73,13 @@ Run the narrowest useful checks first:
 1. Focused test for changed behavior
 2. Test-quality review with [[Test Quality Rubric]]
 3. Related test module or package
-4. Broader suite when risk or project practice requires it
-5. `ruff` on the changed scope
-6. `mypy` on the changed scope
-7. `basedpyright` on the changed scope
+4. Targeted mutation testing for an implemented feature; resolve or explain
+   relevant surviving and uncovered mutants, then rerun affected normal tests
+   and the mutation target
+5. Broader suite when risk or project practice requires it
+6. `ruff` on the changed scope
+7. `mypy` on the changed scope
+8. `basedpyright` on the changed scope
 
 Report the exact command and blocker when a check cannot run. Do not claim completion from inspection alone when executable verification is available.
 
@@ -97,6 +103,10 @@ Report the exact command and blocker when a check cannot run. Do not claim compl
 - New or materially changed tests have credible evidence on the rubric's two
   primary criteria; score bands guide improvement rather than act as an
   automatic gate.
+- An implemented feature's changed production behavior has targeted mutation
+  evidence. Relevant surviving and uncovered mutants are resolved or explained;
+  an unavailable mutation run is reported as not run and is not described as a
+  passed gate.
 - Changed behavior is verified through a real entry point when practical.
 - `ruff`, `mypy`, and `basedpyright` pass without weakened configuration.
 - Every changed line serves the request.

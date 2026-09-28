@@ -102,11 +102,12 @@ elsewhere.
 
 ## Sensitivity evidence
 
-For a bug fix, capture the pre-fix failure. For new or refactored behavior,
-temporarily introduce the smallest relevant defect or use a targeted mutation
-when practical—for example remove `--`, unquote an expansion, change a handled
-status, or skip cleanup—and confirm that the test fails for the intended
-reason. Restore the production logic before completion.
+For a bug fix, capture the pre-fix failure. After implementing a feature or
+refactored behavior and passing its focused and related tests, follow
+[[Test Quality Rubric#Post-implementation mutation protocol]]. For example,
+remove `--`, unquote an expansion, change a handled status, or skip cleanup,
+and confirm that the intended test fails for the intended reason. Restore the
+production logic and verify the final diff before completion.
 
 ## Anti-patterns
 

@@ -64,6 +64,15 @@ is a local collaboration preference rather than wording from the Bash, Bats,
 or style-guide sources. Record the expected behavior failure and confirm there
 is no production-code diff before a separately authorized GREEN stage.
 
+### Post-implementation mutation checks
+
+The targeted mutation check after feature implementation is a local
+collaboration preference rather than wording from the Bash, Bats, ShellCheck,
+`shfmt`, or style-guide sources. Use repository-configured tooling when it
+exists. Otherwise, a narrowly targeted temporary defect may establish test
+sensitivity only when the original production logic is restored and the final
+diff is verified.
+
 ### Bash versus POSIX `sh`
 
 The guide chooses an explicit dialect instead of a lowest-common-denominator

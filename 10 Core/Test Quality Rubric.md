@@ -67,9 +67,8 @@ credible protection on either one.
 1. Identify the requirement, rule, boundary, or defect the test claims to
    protect.
 2. Run the test against the intended production behavior.
-3. Establish sensitivity where practical: capture the pre-fix failure, use a
-   targeted mutation tool, or temporarily introduce the relevant defect and
-   confirm that the test fails. Restore the production logic before continuing.
+3. Establish sensitivity: capture the pre-fix failure for a behavior fix; after
+   implementing a feature, follow the targeted mutation protocol below.
 4. Score all ten criteria and note the reason for every 0 or 1.
 5. Use the two primary criteria first, then the total and score band, to decide
    whether to keep, improve, rewrite, or remove the test.
@@ -77,6 +76,38 @@ credible protection on either one.
 Do not manufacture a mutation that only breaks setup or an unrelated path.
 Sensitivity evidence is valuable only when the test fails because the claimed
 behavior changed.
+
+## Post-implementation mutation protocol
+
+After implementing a feature and passing its focused and related tests, run
+targeted mutation testing against the changed production behavior.
+
+- Use the target repository's configured mutation tool, command, environment,
+  and dependency set. Do not introduce or reconfigure mutation tooling merely
+  to make the check appear to pass.
+- Start with the changed production files, functions, or modules and the tests
+  intended to protect them. Expand the scope only when the behavior crosses a
+  boundary that the narrow target cannot exercise credibly.
+- Classify results as killed, survived, not covered, timed out or errored, or
+  equivalent/out of scope. Do not rely on an aggregate mutation score alone.
+- Treat a relevant surviving or uncovered mutant as missing test evidence.
+  Strengthen the behavior-focused test, rerun the affected normal tests, and
+  rerun the mutation target.
+- Explain equivalent or out-of-scope mutants. Do not distort production code
+  or add implementation-coupled assertions solely to kill a mutant.
+- When the repository has no supported mutation runner, introduce the smallest
+  relevant temporary defect when practical, confirm that the intended test
+  fails for the expected reason, restore the production logic, and verify the
+  final diff. Report this as targeted sensitivity evidence, not as a complete
+  tool-based mutation run.
+- Report the repository and working directory, exact command, mutated scope,
+  tests exercised, result categories, disposition of relevant survivors, and
+  any blocker or substitution.
+
+There is no universal mutation-score threshold. A repository-specific stricter
+threshold takes precedence. The shared gate is that relevant surviving and
+uncovered mutants in the changed behavior are either resolved or explicitly
+accounted for.
 
 Related: [[Testing Strategy]] · [[Workflow and Quality Gates]] ·
 [[Review Checklist]] · [[Bash Testing Strategy]] ·
