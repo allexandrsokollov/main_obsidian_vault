@@ -62,7 +62,9 @@ workflow and safety contract.
 The separate, test-only RED checkpoint in [[Bash Workflow and Quality Gates]]
 is a local collaboration preference rather than wording from the Bash, Bats,
 or style-guide sources. Record the expected behavior failure and confirm there
-is no production-code diff before a separately authorized GREEN stage.
+is no production-code diff before GREEN implementation. Continue under the
+task's existing authorization unless the user requested a pause or
+implementation is out of scope.
 
 ### Post-implementation mutation checks
 

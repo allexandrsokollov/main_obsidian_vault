@@ -17,10 +17,11 @@ tags:
   code-review changes, including through a UI, API, CLI, auto-merge, or merge
   queue. The final merge is human-only.
 - Tests are written or updated with every behavior change.
-- Behavior fixes use separate RED and GREEN stages. Keep RED test-only: change
+- Behavior fixes use RED and GREEN stages. Keep RED test-only: change
   only the focused behavior test, run it, record the expected behavior failure,
   confirm there is no production-code diff, and report that evidence. Start
-  production implementation only in the separately authorized GREEN stage.
+  production implementation under the task's existing authorization unless
+  the user requested a pause or implementation is out of scope.
 - After implementing a feature and passing its focused and related tests, run
   targeted mutation testing against the changed production behavior before
   claiming the mutation gate passed.
