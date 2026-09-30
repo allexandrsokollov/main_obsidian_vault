@@ -25,6 +25,14 @@ Production code should be easy to read, easy to change, and hard to misuse.
 - Keep business logic independent of HTTP, framework, request, and ORM primitives.
 - Isolate side effects such as databases, networks, files, and queues from complex policy decisions.
 - Raise meaningful domain exceptions and preserve causes when translating errors.
+- Prefer the narrowest exception types the operation is expected to handle.
+  When callers need a stable error contract, define a specific domain or
+  integration exception and translate known lower-level failures into it with
+  `raise ... from exc`; let other failures propagate.
+- Use `except Exception` only when a broad fallback is genuinely needed at a
+  boundary. In the same `try` statement, put `except` clauses for known,
+  specific failures first; the broad clause must handle only unexpected
+  failures, preserve the cause when translating them, or re-raise them.
 - Remove duplicated business knowledge, while allowing small local syntax duplication when abstraction would reduce clarity.
 - Organize by business feature and keep classes cohesive.
 - Keep imports at module level except for a justified optional or measured heavy dependency.
@@ -39,6 +47,9 @@ Production code should be easy to read, easy to change, and hard to misuse.
 - Raw `dict` or `tuple` payloads crossing application boundaries.
 - Deep conditional trees for normal control flow or silent fallback for unknown domain states.
 - Swallowed exceptions or generic exceptions for known business failures.
+- Bare `except` and `except BaseException`, including their `except*`
+  equivalents. Do not use `except Exception` as the sole handler for a `try`
+  statement or to turn unexpected failures into a success or expected fallback.
 - Framework and persistence details embedded in core domain functions.
 - Speculative abstractions without repeated need.
 - Broad `noqa`, `type: ignore`, or coverage suppressions.
