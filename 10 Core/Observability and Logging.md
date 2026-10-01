@@ -2,7 +2,7 @@
 type: guideline
 status: active
 scope: python
-verified: 2026-08-05
+verified: 2026-10-01
 tags:
   - python
   - observability
@@ -17,6 +17,12 @@ tags:
 Observability should expose the requested semantic events with enough safe
 context to diagnose behavior, without changing contracts or creating a second
 instrumentation architecture.
+
+For distributed tracing, apply [[Distributed Tracing]]. For OpenTelemetry
+execution context or native logging, select the applicable sections of
+[[Python OpenTelemetry Integration]] through [[Python Guidelines Context Map]].
+Keep this note's semantic event matrix and redaction checks; native correlation
+does not replace them. Use [[Tracing Acceptance]] for conformance evidence.
 
 ## Before editing
 

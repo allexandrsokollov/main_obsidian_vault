@@ -2,7 +2,7 @@
 type: guideline
 status: active
 scope: python
-verified: 2026-08-05
+verified: 2026-10-01
 tags:
   - python
   - integration
@@ -17,6 +17,11 @@ tags:
 
 Shared infrastructure should have one clear owner, one production construction
 path, explicit compatibility boundaries, and end-to-end evidence.
+
+For tracing changes, also use [[Distributed Tracing]] and
+[[Tracing Acceptance]]; select stack-specific sections through
+[[Python Guidelines Context Map]]. Tracing guidance does not authorize removing
+existing correlation/identity fields or replacing a canonical shared API.
 
 ## Required
 
@@ -38,8 +43,10 @@ path, explicit compatibility boundaries, and end-to-end evidence.
   required identity optional, or add a fallback without explicit contract
   evidence.
 - Keep request-specific data request-scoped through the framework or
-  instrumentation context. Do not store it in module-level or static
-  variables.
+  instrumentation context. Do not store it in shared mutable module-level or
+  static variables. A canonical module-level ContextVar declaration is permitted;
+  its values remain execution-scoped and are restored on scope exit as specified
+  in [[Distributed Tracing#Application execution context]].
 - For a staged multi-repository change, implement and verify the owning layer
   before updating consumers.
 - For a shared-library or contract change, publish and independently resolve

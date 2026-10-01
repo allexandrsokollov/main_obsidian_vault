@@ -46,6 +46,14 @@ upstream repository:
   → related-definition grouping, import-time safety, and executable-module
   structure in [[Python Module Organization]]
 
+## Supplemental supplied tracing standard
+
+[[Tracing Sources]] indexes the user-supplied revision 1.3 distributed tracing
+standard, its immutable local snapshot, section coverage, and verification
+limits. It supports [[Distributed Tracing]], [[Python OpenTelemetry Integration]],
+and [[Tracing Acceptance]] independently of the pinned guidelines-python
+revision. Local adaptations are in [[Interpretation Notes#Tracing standard integration]].
+
 ## Maintenance
 
 When updating the vault:

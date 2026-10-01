@@ -43,6 +43,51 @@ stronger tests or an explicit disposition. This is a local collaboration
 preference, not wording or a universal score threshold from the pinned upstream
 Python guidance.
 
+## Tracing standard integration
+
+The user approved integration of the revision 1.3 standard on 2026-10-01.
+[[Tracing Sources]] records its immutable supplied snapshot and coverage.
+[[Distributed Tracing]], [[Python OpenTelemetry Integration]], and
+[[Tracing Acceptance]] adopt its applicable rules as scoped Python microservice
+guidance. The original remains **Proposed**; active vault notes do not assert
+approval of a dependency set, platform service template, or live deployment.
+Explicit user requirements and closer target-repository instructions retain
+their existing precedence. Compatibility changes still require their own
+explicit contract/migration evidence under [[Integration Boundaries]].
+
+Local adaptations:
+
+- **Manifest revision:** source section 19 retains standard_revision 1.2 inside
+  a revision 1.3 document. The derived manifest uses 1.3. The snapshot is unchanged.
+- **Broad exception example:** section 14.2 demonstrates tracing classification
+  with a sole except Exception handler. Its diagnostic intent is retained, but
+  executable target code follows [[Clean Code and Architecture]]: handle known
+  narrow failures first, permit a broad fallback only at a justified boundary,
+  and preserve cause or re-raise. Do not turn this qualified rule into an absolute
+  ban or copy the sketch as a contrary public exception contract.
+- **ContextVar storage:** a canonical module-level declaration is compatible
+  with execution-scoped bindings. The prohibition on shared request state
+  concerns shared mutable module/static values, not declaration of the ContextVar
+  key. OTel active state remains separate; clearing one store does not clear both.
+- **Business outcomes:** the application-span outcome policy does not rewrite
+  domain exceptions, public HTTP errors, retries, or broker acknowledgement.
+  Preserve contracts and implement the selected telemetry policy at its owner.
+- **Supported choices:** link-based messaging is the preferred default, while
+  exclusively single-message parentage is permitted. Batch creation/processing,
+  deferred continuation, and suppressed-HTTP propagation alternatives retain
+  their documented choices and required assertions. Choosing an allowed option
+  is not a MUST exception; outbox carrier persistence remains SHOULD.
+- **Version and verification scope:** the source's SemConv review target and
+  tagged SDK/FastStream observations are provenance, not recommended pins or
+  evidence about another release. Documentation verified dates record identity,
+  coverage, and retrieval checks. Real compatibility and ingestion are separately
+  established through [[Tracing Acceptance]].
+
+This extension is supplemental supplied/local guidance, not wording from the
+pinned guidelines-python revision. Framework-specific rules are selected only
+for the stack/features in scope. Required/Forbidden, SHOULD overrides, MAY
+choices, and approved MUST exceptions retain their distinct meanings.
+
 ## Python module organization
 
 [[Python Module Organization]] is a local synthesis rather than a summary of

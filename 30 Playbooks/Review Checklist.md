@@ -2,7 +2,7 @@
 type: playbook
 status: active
 scope: python
-verified: 2026-08-05
+verified: 2026-10-01
 tags:
   - python
   - codex
@@ -56,6 +56,13 @@ Review for correctness and observable risk before style. Load the applicable not
 - [ ] Cross-service defect evidence reaches the boundary where the failure occurs.
 
 ## Quality gates
+
+For tracing/context/native-log changes, also review [[Distributed Tracing]],
+the applicable sections of [[Python OpenTelemetry Integration]], and
+[[Tracing Acceptance]]. Check single ownership, context isolation, actual
+carriers and native records, selected policy choices, and visibly separate
+overrides/exceptions. A configured instrumentor or backend screenshot alone
+does not establish conformance.
 
 - [ ] Relevant tests pass.
 - [ ] `ruff` passes without weakened rules.
