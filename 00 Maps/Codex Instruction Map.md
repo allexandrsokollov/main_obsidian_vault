@@ -32,6 +32,7 @@ discovers them at task start, so start a fresh task after changing them.
 |---|---|---|
 | Placement or personalization | [[Codex Instruction Strategy#Personalization]] | Surface and scope settled |
 | Repository contract | [[Codex Instruction Strategy#Repository contract]] | Rules, commands, and done criteria settled |
+| MR or PR description | [[Codex Instruction Strategy#Merge-request descriptions]] | Brief reason and structured list of changes captured |
 | Task prompt or plan | [[Codex Instruction Strategy#Task and plan]] | Goal, context, constraints, and evidence known |
 | Material open choice | [[Codex Context Continuity#Decision checkpoint]] | Choices accepted or explicitly open |
 | Noisy exploration or handoff | [[Codex Context Continuity#Compact handoff]] | Truth, evidence, risks, and next action captured |

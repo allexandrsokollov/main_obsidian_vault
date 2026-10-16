@@ -78,4 +78,34 @@ evidence. Include the narrowest behavior check and expected result. On failure,
 diagnose, revise, and rerun; finish only when checks pass or an external blocker
 and risk are reported. Do not repeat durable guardrails in the task prompt.
 
+## Merge-request descriptions
+
+Keep MR and PR descriptions short, vivid, and easy to scan. Use concrete
+language and active verbs. Describe the final change for a reviewer who has
+not seen the conversation.
+
+Use this structure:
+
+```md
+## Why
+<One or two sentences explaining the problem and why this change was needed.>
+
+## What changed
+- <A concrete change and its effect.>
+- <Another meaningful change; group related work when useful.>
+```
+
+Include only why the work was needed and what was done. These restrictions
+apply to every MR and PR description, including repository templates:
+
+- Never describe tests that were run or passed, test results, or validation
+  performed. The only allowed test mention is that tests were added or updated
+  as part of the change; say nothing more about testing.
+- Never include next steps, future work, remaining-work lists, deployment or
+  rollout plans, or follow-up actions.
+- Omit conversational history.
+
+Follow a required repository template within these restrictions, keeping its
+content equally concise.
+
 Related: [[Codex Instruction Map]] · [[Codex Context Continuity]] · [[Python Guidelines Context Map]] · [[Codex Product Sources]]

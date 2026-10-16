@@ -16,6 +16,8 @@ This workspace contains guidance, not application code.
   task-routing table.
 - Codex instruction design, planning, retrospectives, or handoffs: read
   `00 Maps/Codex Instruction Map.md`, then follow its task-routing table.
+- MR or PR descriptions: read `30 Playbooks/Codex Instruction Strategy.md`
+  section `Merge-request descriptions`.
 
 Load only routed context; do not follow `Related` links by default.
 
